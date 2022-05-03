@@ -5,12 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    //Ändras i inspektorn
+    public string playerModeScene;
 
-    public string firstLevel;
-
+    //Funktioner för MainMenu knapparna:
     public void StartGame()
     {
-        SceneManager.LoadScene(firstLevel);
+        SceneManager.LoadScene(playerModeScene);
     }
 
     public void OpenOptions()
