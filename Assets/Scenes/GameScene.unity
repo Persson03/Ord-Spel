@@ -234,7 +234,7 @@ PrefabInstance:
     - target: {fileID: 4503461982303758791, guid: 9ecd3ab9d23e7e34ca6be73f5b1c6e19,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ClosePauseMenu
+      value: QuitToMain
       objectReference: {fileID: 0}
     - target: {fileID: 4503461983642176411, guid: 9ecd3ab9d23e7e34ca6be73f5b1c6e19,
         type: 3}
