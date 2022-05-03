@@ -7,12 +7,13 @@ using UnityEngine.SceneManagement;
 public class Pause : MonoBehaviour
 {
     [SerializeField] private Canvas pauseMenu;
+    [SerializeField] private Canvas settingsMenu;
     private string mainMenuScene = "MainMenu";
-    private string settingsMenu = "Settings";
 
     private void Start()
     {
         pauseMenu.enabled = false; // Så Paus Menyn alltid startar stängd
+        settingsMenu.enabled = false;// Så Settings Menyn alltid startar stängd
     }
 
     private void Update()
@@ -34,7 +35,7 @@ public class Pause : MonoBehaviour
     // Funktioner för paus Knapparna:
     public void OpenSettingsMenu()
     {
-        SceneManager.LoadScene(settingsMenu);
+        settingsMenu.enabled = true;
     }
 
     public void ClosePauseMenu()
