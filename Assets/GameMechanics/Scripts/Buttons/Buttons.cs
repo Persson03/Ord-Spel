@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
 
 public class Buttons : MonoBehaviour
 {
@@ -30,6 +31,9 @@ public class Buttons : MonoBehaviour
 
     bool EmptyGuess;
 
+    //Valid Words
+    string[] ValidWords = System.IO.File.ReadAllLines("WordList.txt");
+
 
 
 
@@ -38,12 +42,14 @@ public class Buttons : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+        var ValidWordsUpperCase = ValidWords.Select(c => c.ToUpper()).ToArray();
+        Debug.Log(ValidWords[0]);
         Guess = GameObject.Find("Guess").GetComponent<Text>().text;
         Answer = GameObject.Find("Answer").GetComponent<Text>().text;
 
@@ -53,7 +59,6 @@ public class Buttons : MonoBehaviour
         {
             char c = Alphabet[Random.Range(0, Alphabet.Length)];
             buttons.Add(char.ToString(c));
-
         }
 
         //Assign Button Letters
@@ -78,7 +83,13 @@ public class Buttons : MonoBehaviour
         GameObject.Find("Button8").GetComponentInChildren<Text>().text = BtnLetter8;
         GameObject.Find("Button9").GetComponentInChildren<Text>().text = BtnLetter9;
 
-
+        if (ValidWordsUpperCase.Contains(Answer))
+        {
+            GameObject.Find("Answer").GetComponent<Text>().color = Color.green;
+        } else if (!ValidWordsUpperCase.Contains(Answer))
+        {
+            GameObject.Find("Answer").GetComponent<Text>().color = Color.red;
+        }
 
         //Check For Final Guess
         if (Input.GetMouseButtonDown(1) && EmptyGuess == false)
