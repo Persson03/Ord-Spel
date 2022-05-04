@@ -24,6 +24,12 @@ public class Buttons : MonoBehaviour
     public string BtnLetter1;
     public string BtnLetter2;
     public string BtnLetter3;
+    public string BtnLetter4;
+    public string BtnLetter5;
+    public string BtnLetter6;
+    public string BtnLetter7;
+    public string BtnLetter8;
+    public string BtnLetter9;
 
 
 
@@ -46,11 +52,23 @@ public class Buttons : MonoBehaviour
         BtnLetter1 = "T";
         BtnLetter2 = "A";
         BtnLetter3 = "L";
+        BtnLetter4 = "B";
+        BtnLetter5 = "V";
+        BtnLetter6 = "G";
+        BtnLetter7 = "K";
+        BtnLetter8 = "J";
+        BtnLetter9 = "M";
 
         //Change Letter On Button
         GameObject.Find("Button1").GetComponentInChildren<Text>().text = BtnLetter1;
         GameObject.Find("Button2").GetComponentInChildren<Text>().text = BtnLetter2;
         GameObject.Find("Button3").GetComponentInChildren<Text>().text = BtnLetter3;
+        GameObject.Find("Button4").GetComponentInChildren<Text>().text = BtnLetter4;
+        GameObject.Find("Button5").GetComponentInChildren<Text>().text = BtnLetter5;
+        GameObject.Find("Button6").GetComponentInChildren<Text>().text = BtnLetter6;
+        GameObject.Find("Button7").GetComponentInChildren<Text>().text = BtnLetter7;
+        GameObject.Find("Button8").GetComponentInChildren<Text>().text = BtnLetter8;
+        GameObject.Find("Button9").GetComponentInChildren<Text>().text = BtnLetter9;
 
         Debug.Log(CurrentLetter);
 
