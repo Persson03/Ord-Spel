@@ -14,15 +14,7 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene(playerModeScene);
     }
 
-    public void OpenOptions()
-    {
-
-    }
-
-    public void CloseOptions()
-    {
-
-    }
+    //Settings knappen använder GeneralUI scriptet
 
     public void QuitGame()
     {
