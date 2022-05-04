@@ -32,24 +32,23 @@ public class Buttons : MonoBehaviour
     bool EmptyGuess;
 
     //Valid Words
-    string[] ValidWords = System.IO.File.ReadAllLines("WordList.txt");
 
 
-
+    HashSet<string> hashset = new HashSet<string>(System.IO.File.ReadAllLines("WordList.txt"));
+    
 
 
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        var ValidWordsUpperCase = ValidWords.Select(c => c.ToUpper()).ToArray();
-        Debug.Log(ValidWords[0]);
+
         Guess = GameObject.Find("Guess").GetComponent<Text>().text;
         Answer = GameObject.Find("Answer").GetComponent<Text>().text;
 
@@ -83,10 +82,10 @@ public class Buttons : MonoBehaviour
         GameObject.Find("Button8").GetComponentInChildren<Text>().text = BtnLetter8;
         GameObject.Find("Button9").GetComponentInChildren<Text>().text = BtnLetter9;
 
-        if (ValidWordsUpperCase.Contains(Answer))
+        if (hashset.Contains(Answer))
         {
             GameObject.Find("Answer").GetComponent<Text>().color = Color.green;
-        } else if (!ValidWordsUpperCase.Contains(Answer))
+        } else if (!hashset.Contains(Answer))
         {
             GameObject.Find("Answer").GetComponent<Text>().color = Color.red;
         }
