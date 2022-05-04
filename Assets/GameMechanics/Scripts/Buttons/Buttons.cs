@@ -32,9 +32,7 @@ public class Buttons : MonoBehaviour
     bool EmptyGuess;
 
     //Valid Words
-
-
-    HashSet<string> hashset = new HashSet<string>(System.IO.File.ReadAllLines("WordList.txt"));
+    HashSet<string> ValidWords = new HashSet<string>(System.IO.File.ReadAllLines("WordList.txt"));
     
 
 
@@ -82,10 +80,11 @@ public class Buttons : MonoBehaviour
         GameObject.Find("Button8").GetComponentInChildren<Text>().text = BtnLetter8;
         GameObject.Find("Button9").GetComponentInChildren<Text>().text = BtnLetter9;
 
-        if (hashset.Contains(Answer))
+        //check if answer contains valid word
+        if (ValidWords.Contains(Answer))
         {
             GameObject.Find("Answer").GetComponent<Text>().color = Color.green;
-        } else if (!hashset.Contains(Answer))
+        } else if (!ValidWords.Contains(Answer))
         {
             GameObject.Find("Answer").GetComponent<Text>().color = Color.red;
         }
