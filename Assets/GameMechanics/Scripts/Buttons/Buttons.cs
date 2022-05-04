@@ -15,6 +15,9 @@ public class Buttons : MonoBehaviour
     public string CurrentLetter;
 
     //Button Letters
+    string Alphabet;
+
+    List<string> buttons = new List<string>();
     public string BtnLetter1;
     public string BtnLetter2;
     public string BtnLetter3;
@@ -41,21 +44,28 @@ public class Buttons : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        Debug.Log(EmptyGuess);
         Guess = GameObject.Find("Guess").GetComponent<Text>().text;
         Answer = GameObject.Find("Answer").GetComponent<Text>().text;
 
-        //Button Letters
-        BtnLetter1 = "T";
-        BtnLetter2 = "A";
-        BtnLetter3 = "L";
-        BtnLetter4 = "B";
-        BtnLetter5 = "V";
-        BtnLetter6 = "G";
-        BtnLetter7 = "K";
-        BtnLetter8 = "J";
-        BtnLetter9 = "M";
+        //Randomize Button Letters
+        Alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZÅÄÖ";
+        for (int i = 0; i < 9; i++)
+        {
+            char c = Alphabet[Random.Range(0, Alphabet.Length)];
+            buttons.Add(char.ToString(c));
+
+        }
+
+        //Assign Button Letters
+        BtnLetter1 = buttons.ToArray()[0];
+        BtnLetter2 = buttons.ToArray()[1];
+        BtnLetter3 = buttons.ToArray()[2];
+        BtnLetter4 = buttons.ToArray()[3];
+        BtnLetter5 = buttons.ToArray()[4];
+        BtnLetter6 = buttons.ToArray()[5];
+        BtnLetter7 = buttons.ToArray()[6];
+        BtnLetter8 = buttons.ToArray()[7];
+        BtnLetter9 = buttons.ToArray()[8];
 
         //Change Letter On Button
         GameObject.Find("Button1").GetComponentInChildren<Text>().text = BtnLetter1;
