@@ -9,6 +9,7 @@ public class GeneralUI : MonoBehaviour
     private Canvas pauseMenu;
     private Canvas settingsMenu;
     private string mainMenuScene = "MainMenu";
+    private string nextPlayerGame = "GameScene2";
 
     private void Start()
     {
@@ -54,6 +55,18 @@ public class GeneralUI : MonoBehaviour
     public void QuitToMain()
     {
         SceneManager.LoadScene(mainMenuScene);
+        ModeSelection.player1Turn = true;
+        Highscore.player1Score = 0;
+        Highscore.player2Score = 0;
+    }
+
+
+    //Funkioner för MultiPlayer Knappar
+
+    //När man är i "Nästa spelare Rutan" Om man spelar MultiPlayer och klickar på knappen så startar nästa spel.
+    public void NextPlayerTurn()
+    {
+        SceneManager.LoadScene(nextPlayerGame);
     }
 
 }

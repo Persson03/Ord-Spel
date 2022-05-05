@@ -6,20 +6,21 @@ using UnityEngine.SceneManagement;
 
 public class Highscore : MonoBehaviour
 {
-
-    
+    private string mainMenuScene = "MainMenu";
 
     public static int player1Score;
     public static int player2Score;
 
-    private bool player1turn;
+    public static int player1HighScore;
+    public static int player2HighScore;
 
     private void Start()
     {
-        player1turn = true;
+        ModeSelection.player1Turn = true;
     }
 
-    public void AddScore(int score) //Använd den här i andra script för att lägga till score till spelarna. EXEMPEL: Highscore.AddScore(10);
+    //Använd den här i andra script för att lägga till score till spelarna. EXEMPEL: Highscore.AddScore(10);
+    public void AddScore(int score)
     {
         if(ModeSelection.singlePlayer == true)
         {
@@ -27,16 +28,22 @@ public class Highscore : MonoBehaviour
         }
         else
         {
-            if (player1turn == true)
+            if(ModeSelection.player1Turn == true)
             {
                 player1Score += score;
-                player1turn = false;
             }
             else
             {
                 player2Score += score;
-                player1turn = true;
             }
         }
+    }
+
+    //Sparar HighScores när ett spel är klart
+    public void FinishGame()
+    {
+        player1HighScore = player1Score;
+        player2HighScore = player2Score;
+        SceneManager.LoadScene(mainMenuScene);
     }
 }
