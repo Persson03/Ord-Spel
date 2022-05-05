@@ -254,6 +254,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1895102711}
     - target: {fileID: 1277172305, guid: e80cf6fb91967514bb1610f7c66f5f87, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1277172305, guid: e80cf6fb91967514bb1610f7c66f5f87, type: 3}
       propertyPath: pauseMenu
       value: 
       objectReference: {fileID: 1958211702}
