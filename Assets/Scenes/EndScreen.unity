@@ -616,8 +616,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52bec2b549b24174ca62ba8afc89c8c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  introductionPlayer1: 'Spelare 1 HighScore: '
-  introductionPlayer2: 'Spelare 2 HighScore: '
+  introductionPlayer1: 'Spelare 1 Score: '
+  introductionPlayer2: 'Spelare 2 Score: '
   hasSetScore: 0
 --- !u!1 &1415240040
 GameObject:
