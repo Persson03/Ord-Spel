@@ -202,6 +202,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1895102710 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1431391034, guid: f9d4886e2811ef64992c858ce9265fdb,
+    type: 3}
+  m_PrefabInstance: {fileID: 5631439599095469683}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1895102711 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1431390980, guid: f9d4886e2811ef64992c858ce9265fdb,
+    type: 3}
+  m_PrefabInstance: {fileID: 5631439599095469683}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!223 &1958211702 stripped
 Canvas:
   m_CorrespondingSourceObject: {fileID: 8492549354490825311, guid: f9d4886e2811ef64992c858ce9265fdb,
@@ -227,6 +245,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 860308087, guid: e80cf6fb91967514bb1610f7c66f5f87, type: 3}
+      propertyPath: anim
+      value: 
+      objectReference: {fileID: 1895102710}
+    - target: {fileID: 860308087, guid: e80cf6fb91967514bb1610f7c66f5f87, type: 3}
+      propertyPath: countdownText
+      value: 
+      objectReference: {fileID: 1895102711}
     - target: {fileID: 1277172305, guid: e80cf6fb91967514bb1610f7c66f5f87, type: 3}
       propertyPath: pauseMenu
       value: 
@@ -330,6 +356,11 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2376763393593472174, guid: f9d4886e2811ef64992c858ce9265fdb,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3588184548965025204, guid: f9d4886e2811ef64992c858ce9265fdb,
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
