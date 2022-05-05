@@ -856,9 +856,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1390403936}
     - target: {fileID: 860308087, guid: e80cf6fb91967514bb1610f7c66f5f87, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 860308087, guid: e80cf6fb91967514bb1610f7c66f5f87, type: 3}
+      propertyPath: startingTime
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 860308087, guid: e80cf6fb91967514bb1610f7c66f5f87, type: 3}
       propertyPath: countdownText
       value: 
       objectReference: {fileID: 1390403934}
+    - target: {fileID: 1277172305, guid: e80cf6fb91967514bb1610f7c66f5f87, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1277172305, guid: e80cf6fb91967514bb1610f7c66f5f87, type: 3}
       propertyPath: pauseMenu
       value: 

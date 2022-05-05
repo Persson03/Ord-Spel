@@ -6,30 +6,37 @@ using UnityEngine.SceneManagement;
 
 public class Highscore : MonoBehaviour
 {
-    [SerializeField] private string endScreenScene;
-    [SerializeField] private Timer timer;
-    [SerializeField] private Text highScore1;
-    [SerializeField] private string introductionPlayer1 = "Player 1 highscore: ";
 
-    private int highScore;
+    
+
+    public static int player1Score;
+    public static int player2Score;
+
+    private bool player1turn;
 
     private void Start()
     {
-        highScore = 0;
+        player1turn = true;
     }
 
-    public void AddScore(int score)
+    public void AddScore(int score) //Använd den här i andra script för att lägga till score till spelarna. EXEMPEL: Highscore.AddScore(10);
     {
-        highScore += score;
-    }
-
-
-    private void Update()
-    {
-        if(timer.currentTime <= 0)
+        if(ModeSelection.singlePlayer == true)
         {
-            SceneManager.LoadScene(endScreenScene);
-            highScore1.text = introductionPlayer1 + highScore;
+            player1Score += score;
+        }
+        else
+        {
+            if (player1turn == true)
+            {
+                player1Score += score;
+                player1turn = false;
+            }
+            else
+            {
+                player2Score += score;
+                player1turn = true;
+            }
         }
     }
 }

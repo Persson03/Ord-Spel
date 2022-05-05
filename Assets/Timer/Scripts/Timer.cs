@@ -2,20 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Timer : MonoBehaviour
 {
+    public delegate void OnVariableChangeDelegate(int newVal);
+
     [SerializeField] Text countdownText;
     [SerializeField] Animator anim;
-
     [SerializeField]private float startingTime = 30f;
 
-    private bool timerActivated = false;
-    public float currentTime;
-    float elapsed = 0f;
+    [HideInInspector]public float currentTime;
 
-    public delegate void OnVariableChangeDelegate(int newVal);
-    public event OnVariableChangeDelegate OnVariableChange;
+    private string endScreenScene = "EndScreen";
+    private bool timerActivated = false;
+    private float elapsed = 0f;
+
+
 
     void Start()
     {
@@ -26,6 +29,7 @@ public class Timer : MonoBehaviour
     {
         Animation();
         Countdown();
+        TimeChecker();
         if (Input.GetKeyDown(KeyCode.Space))
         {
             timerActivated = true;
@@ -69,5 +73,14 @@ public class Timer : MonoBehaviour
     {
         timerActivated = true;
     }
+
+    private void TimeChecker()
+    {
+        if(currentTime <= 0)
+        {
+            SceneManager.LoadScene(endScreenScene);
+        }
+    }
+
 
 }
