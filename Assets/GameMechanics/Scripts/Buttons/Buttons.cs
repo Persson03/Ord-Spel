@@ -28,11 +28,12 @@ public class Buttons : MonoBehaviour
     public string BtnLetter7;
     public string BtnLetter8;
     public string BtnLetter9;
-
     bool EmptyGuess;
 
     //Valid Words
     HashSet<string> ValidWords = new HashSet<string>(System.IO.File.ReadAllLines("WordList.txt"));
+
+    List<string> UsedWords = new List<string>();
     
 
 
@@ -46,7 +47,6 @@ public class Buttons : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         Guess = GameObject.Find("Guess").GetComponent<Text>().text;
         Answer = GameObject.Find("Answer").GetComponent<Text>().text;
 
@@ -59,15 +59,15 @@ public class Buttons : MonoBehaviour
         }
 
         //Assign Button Letters
-        BtnLetter1 = buttons.ToArray()[0];
-        BtnLetter2 = buttons.ToArray()[1];
-        BtnLetter3 = buttons.ToArray()[2];
-        BtnLetter4 = buttons.ToArray()[3];
-        BtnLetter5 = buttons.ToArray()[4];
-        BtnLetter6 = buttons.ToArray()[5];
-        BtnLetter7 = buttons.ToArray()[6];
-        BtnLetter8 = buttons.ToArray()[7];
-        BtnLetter9 = buttons.ToArray()[8];
+        BtnLetter1 = buttons[0];
+        BtnLetter2 = buttons[1];
+        BtnLetter3 = buttons[2];
+        BtnLetter4 = buttons[3];
+        BtnLetter5 = buttons[4];
+        BtnLetter6 = buttons[5];
+        BtnLetter7 = buttons[6];
+        BtnLetter8 = buttons[7];
+        BtnLetter9 = buttons[8];
 
         //Change Letter On Button
         GameObject.Find("Button1").GetComponentInChildren<Text>().text = BtnLetter1;
@@ -81,24 +81,57 @@ public class Buttons : MonoBehaviour
         GameObject.Find("Button9").GetComponentInChildren<Text>().text = BtnLetter9;
 
         //check if answer contains valid word
-        if (ValidWords.Contains(Answer))
+        if (ValidWords.Contains(Answer) && !UsedWords.Contains(Answer))
         {
             GameObject.Find("Answer").GetComponent<Text>().color = Color.green;
-        } else if (!ValidWords.Contains(Answer))
+            UsedWords.Add(Answer);
+        }
+
+        //check if answer does not contain valid word
+        if (!ValidWords.Contains(Answer))
         {
             GameObject.Find("Answer").GetComponent<Text>().color = Color.red;
         }
 
+
+
+
         //Check For Final Guess
         if (Input.GetMouseButtonDown(1) && EmptyGuess == false)
         {
+            if (StatusText() == false)
+            {
                 GameObject.Find("Answer").GetComponent<Text>().text = Guess;
                 GameObject.Find("Guess").GetComponent<Text>().text = null;
                 EmptyGuess = true;
+                StatusText();
+            } else if (StatusText() == true)
+            {
+                StatusText();
+            }
+                
         }
 
     }
 
+
+    public bool StatusText()
+    {
+        if (Guess == Answer && Answer != "")
+        {
+            GameObject.Find("StatusText").GetComponent<Text>().text = "SKRIV NÅGOT NYTT!";
+            return true;
+        } else if (UsedWords.Contains(Guess))
+        {
+            GameObject.Find("StatusText").GetComponent<Text>().text = "REDAN ANVÄND!";
+            return true;
+        }
+        else
+        {
+            GameObject.Find("StatusText").GetComponent<Text>().text = null;
+            return false;
+        }
+    }
 
     public void ChangeLetter()
     {
