@@ -135,7 +135,13 @@ public class Buttons : MonoBehaviour
 
     public void ChangeLetter()
     {
-        if (GameObject.Find("Guess").GetComponent<Text>().text != null)
+
+        if (StatusText() == true)
+        {
+            GameObject.Find("Guess").GetComponent<Text>().text = CurrentLetter;
+        }
+
+        else if (GameObject.Find("Guess").GetComponent<Text>().text != null)
         {
             GameObject.Find("Guess").GetComponent<Text>().text = Guess + CurrentLetter;
         }
