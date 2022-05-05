@@ -11,7 +11,7 @@ public class Timer : MonoBehaviour
     [SerializeField]private float startingTime = 30f;
 
     private bool timerActivated = false;
-    float currentTime;
+    public float currentTime;
     float elapsed = 0f;
 
     public delegate void OnVariableChangeDelegate(int newVal);
