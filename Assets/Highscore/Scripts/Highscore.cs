@@ -20,7 +20,7 @@ public class Highscore : MonoBehaviour
     }
 
     //Använd den här i andra script för att lägga till score till spelarna. EXEMPEL: Highscore.AddScore(10);
-    public void AddScore(int score)
+    public static void AddScore(int score)
     {
         if(ModeSelection.singlePlayer == true)
         {
@@ -43,8 +43,18 @@ public class Highscore : MonoBehaviour
     public void FinishGame()
     {
         ModeSelection.player1Turn = true;
-        player1HighScore = player1Score;
-        player2HighScore = player2Score;
+
+        //Tittar om Score är större än Highscore och isåfall sparar den scoren som en highScore
+        if (player1Score > PlayerPrefs.GetInt("HighScorePlayer1"))
+        {
+            player1HighScore = player1Score;
+            PlayerPrefs.SetInt("HighScorePlayer1", player1HighScore);
+        }
+        if(player2Score > PlayerPrefs.GetInt("HighScorePlayer2"))
+        {
+            player2HighScore = player2Score;
+            PlayerPrefs.SetInt("HighScorePlayer2", player2HighScore);
+        }
         SceneManager.LoadScene(mainMenuScene);
     }
 }

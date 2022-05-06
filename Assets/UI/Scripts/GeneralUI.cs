@@ -10,6 +10,7 @@ public class GeneralUI : MonoBehaviour
     private Canvas settingsMenu;
     private string mainMenuScene = "MainMenu";
     private string nextPlayerGame = "GameScene2";
+    private string highScoresScene = "HighScores";
 
     private void Start()
     {
@@ -58,6 +59,11 @@ public class GeneralUI : MonoBehaviour
         ModeSelection.player1Turn = true;
         Highscore.player1Score = 0;
         Highscore.player2Score = 0;
+    }
+
+    public void OpenHighScores()
+    {
+        SceneManager.LoadScene(highScoresScene);
     }
 
 
