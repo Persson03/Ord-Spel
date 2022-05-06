@@ -67,6 +67,7 @@ public class GeneralUI : MonoBehaviour
     public void NextPlayerTurn()
     {
         SceneManager.LoadScene(nextPlayerGame);
+        ModeSelection.player1Turn = false;
     }
 
 }

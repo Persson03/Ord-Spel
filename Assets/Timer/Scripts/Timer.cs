@@ -77,25 +77,23 @@ public class Timer : MonoBehaviour
 
     private void TimeChecker()
     {
-        Debug.Log(ModeSelection.player1Turn);
         if (currentTime <= 0)
         {
             //När Timern går till 0 så kommer man till EndScreen
             if(ModeSelection.singlePlayer == true)
             {
                 SceneManager.LoadScene(endScreenScene);
-                Debug.Log("SINGLEPLAYER");
             }
 
             //När timern går till 0 så kommer man till "Nästa Spelare Skärm" Om det är första spelarens tur / Annars till slut skärmen
-            else if(ModeSelection.singlePlayer == false)
+            else
             {
                 if (ModeSelection.player1Turn == true)
                 {
                     SceneManager.LoadScene(nextPlayerScene);
                     ModeSelection.player1Turn = false;
                 }
-                else if(ModeSelection.player1Turn == false)
+                else
                 {
                     SceneManager.LoadScene(endScreenScene);
                 }
