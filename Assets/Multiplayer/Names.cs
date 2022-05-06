@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Names : MonoBehaviour
 {
+    [SerializeField] private string MultiplayerGameScene;
+
     public List<string> nameList = new List<string>();
     //nameList.Add(Input.Player1);
     //Debug.Log(nameList[0]);
@@ -31,6 +34,11 @@ public class Names : MonoBehaviour
     private void SaveNames()
     {
         
+    }
+
+    public void StartMultiplayerGame()
+    {
+        SceneManager.LoadScene(MultiplayerGameScene);
     }
 
 }
