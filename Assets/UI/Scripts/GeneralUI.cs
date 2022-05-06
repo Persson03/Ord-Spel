@@ -72,6 +72,7 @@ public class GeneralUI : MonoBehaviour
     //När man är i "Nästa spelare Rutan" Om man spelar MultiPlayer och klickar på knappen så startar nästa spel.
     public void NextPlayerTurn()
     {
+        Timer.timerActivated = true;
         SceneManager.LoadScene(nextPlayerGame);
         ModeSelection.player1Turn = false;
     }

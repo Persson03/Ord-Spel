@@ -18,13 +18,12 @@ public class Timer : MonoBehaviour
     private string nextPlayerScene = "NextPlayer";
     private float elapsed = 0f;
 
-    private bool timerActivated = false;
+    public static bool timerActivated;
 
 
     void Start()
     {
         currentTime = startingTime;
-        timerActivated = false;
     }
     void Update()
     {
@@ -36,11 +35,6 @@ public class Timer : MonoBehaviour
         Animation();
         Countdown();
         TimeChecker();
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            timerActivated = true;
-        }
-        
     }
 
     private void Animation()
@@ -88,18 +82,21 @@ public class Timer : MonoBehaviour
             if(ModeSelection.singlePlayer == true)
             {
                 SceneManager.LoadScene(endScreenScene);
-            }
+                timerActivated = false;
+}
 
             //När timern går till 0 så kommer man till "Nästa Spelare Skärm" Om det är första spelarens tur / Annars till slut skärmen
             else
             {
                 if (ModeSelection.player1Turn == true)
                 {
+                    timerActivated = false;
                     SceneManager.LoadScene(nextPlayerScene);
                     ModeSelection.player1Turn = false;
                 }
                 else
                 {
+                    timerActivated = false;
                     SceneManager.LoadScene(endScreenScene);
                 }
             }

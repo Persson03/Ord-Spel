@@ -39,6 +39,7 @@ public class Names : MonoBehaviour
     public void StartMultiplayerGame()
     {
         SceneManager.LoadScene(MultiplayerGameScene);
+        Timer.timerActivated = true;
     }
 
 }

@@ -1988,6 +1988,24 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 672906545}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &1290268933 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1431391034, guid: f9d4886e2811ef64992c858ce9265fdb,
+    type: 3}
+  m_PrefabInstance: {fileID: 172115554}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1290268934 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1431390980, guid: f9d4886e2811ef64992c858ce9265fdb,
+    type: 3}
+  m_PrefabInstance: {fileID: 172115554}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1382677308
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2172,9 +2190,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 860308087, guid: e80cf6fb91967514bb1610f7c66f5f87, type: 3}
+      propertyPath: anim
+      value: 
+      objectReference: {fileID: 1290268933}
+    - target: {fileID: 860308087, guid: e80cf6fb91967514bb1610f7c66f5f87, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 860308087, guid: e80cf6fb91967514bb1610f7c66f5f87, type: 3}
+      propertyPath: countdownText
+      value: 
+      objectReference: {fileID: 1290268934}
     - target: {fileID: 1277172305, guid: e80cf6fb91967514bb1610f7c66f5f87, type: 3}
       propertyPath: m_Enabled
       value: 1

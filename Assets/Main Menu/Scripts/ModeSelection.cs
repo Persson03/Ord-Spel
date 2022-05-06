@@ -15,6 +15,7 @@ public class ModeSelection : MonoBehaviour
     //Funktioner för PlayerMode Knapparna:
     public void PlaySinglePlayer()
     {
+        Timer.timerActivated = true;
         SceneManager.LoadScene(singleplayerMode);
         singlePlayer = true;
     }

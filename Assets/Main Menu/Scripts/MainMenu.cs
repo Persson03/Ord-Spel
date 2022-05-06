@@ -8,6 +8,11 @@ public class MainMenu : MonoBehaviour
     //Ändras i inspektorn
     [SerializeField]private string playerModeScene;
 
+    private void Start()
+    {
+        Timer.timerActivated = false;
+    }
+
     //Funktioner för MainMenu knapparna:
     public void StartGame()
     {
