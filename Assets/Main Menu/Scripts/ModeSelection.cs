@@ -9,8 +9,8 @@ public class ModeSelection : MonoBehaviour
     [HideInInspector] public static bool player1Turn;
 
     [Header("Scene Strings")]
-    public string singleplayerMode;
-    public string multiplayerMode;
+    [SerializeField]private string singleplayerMode;
+    [SerializeField]private string multiplayerMode;
 
     //Funktioner för PlayerMode Knapparna:
     public void PlaySinglePlayer()

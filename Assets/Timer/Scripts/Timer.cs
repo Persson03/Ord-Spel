@@ -30,7 +30,7 @@ public class Timer : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.H)) // MÅSTE TAS BORT
         {
-            Highscore.AddScore(5);
+            Score.AddScore(5);
             Debug.Log("Score Added");
         }
         Animation();

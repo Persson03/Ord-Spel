@@ -57,8 +57,8 @@ public class GeneralUI : MonoBehaviour
     {
         SceneManager.LoadScene(mainMenuScene);
         ModeSelection.player1Turn = true;
-        Highscore.player1Score = 0;
-        Highscore.player2Score = 0;
+        Score.player1Score = 0;
+        Score.player2Score = 0;
     }
 
     public void OpenHighScores()
