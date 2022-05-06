@@ -28,6 +28,11 @@ public class Timer : MonoBehaviour
     }
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.H)) // MÅSTE TAS BORT
+        {
+            Highscore.AddScore(5);
+            Debug.Log("Score Added");
+        }
         Animation();
         Countdown();
         TimeChecker();

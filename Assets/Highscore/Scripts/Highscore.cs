@@ -10,6 +10,7 @@ public class Highscore : MonoBehaviour
 
     public static int player1Score;
     public static int player2Score;
+    public static int singlePlayerScore;
 
     public static int player1HighScore;
     public static int player2HighScore;
@@ -24,7 +25,7 @@ public class Highscore : MonoBehaviour
     {
         if(ModeSelection.singlePlayer == true)
         {
-            player1Score += score;
+            singlePlayerScore += score;
         }
         else
         {
@@ -44,17 +45,28 @@ public class Highscore : MonoBehaviour
     {
         ModeSelection.player1Turn = true;
 
-        //Tittar om Score är större än Highscore och isåfall sparar den scoren som en highScore
-        if (player1Score > PlayerPrefs.GetInt("HighScorePlayer1"))
+        //Tittar om det är multiplayer eller inte och sedan sparar scores some highscores om dem är större än highscoren
+        if(ModeSelection.singlePlayer == false) //MultiPlayer
         {
-            player1HighScore = player1Score;
-            PlayerPrefs.SetInt("HighScorePlayer1", player1HighScore);
+            if (player1Score > PlayerPrefs.GetInt("HighScorePlayer1"))
+            {
+                player1HighScore = player1Score;
+                PlayerPrefs.SetInt("HighScorePlayer1", player1HighScore);
+            }
+            if (player2Score > PlayerPrefs.GetInt("HighScorePlayer2"))
+            {
+                player2HighScore = player2Score;
+                PlayerPrefs.SetInt("HighScorePlayer2", player2HighScore);
+            }
         }
-        if(player2Score > PlayerPrefs.GetInt("HighScorePlayer2"))
+        else //Singleplayer
         {
-            player2HighScore = player2Score;
-            PlayerPrefs.SetInt("HighScorePlayer2", player2HighScore);
+            if(singlePlayerScore > PlayerPrefs.GetInt("HighScoreSingleplayer"))
+            {
+                PlayerPrefs.SetInt("HighScoreSingleplayer", singlePlayerScore);
+            }
         }
+        
         SceneManager.LoadScene(mainMenuScene);
     }
 }
