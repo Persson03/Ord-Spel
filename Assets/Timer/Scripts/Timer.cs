@@ -28,10 +28,6 @@ public class Timer : MonoBehaviour
     }
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.H))
-        {
-            Highscore.AddScore(5);
-        }
         Animation();
         Countdown();
         TimeChecker();
