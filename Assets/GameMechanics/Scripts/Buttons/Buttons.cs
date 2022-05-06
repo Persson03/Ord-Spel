@@ -16,6 +16,7 @@ public class Buttons : MonoBehaviour
     public string CurrentLetter;
 
     //Button Letters
+    string UsedAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZÅÄÖ";
     string Alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZÅÄÖ";
 
     //checks if letters are randomized
@@ -61,23 +62,15 @@ public class Buttons : MonoBehaviour
         {
             for (int i = 0; i < 9; i++)
             {
-                char c = Alphabet[Random.Range(0, Alphabet.Length)];
+                char c = UsedAlphabet[Random.Range(0, UsedAlphabet.Length)];
                 buttons.Add(char.ToString(c));
-                Alphabet = Alphabet.Replace(c.ToString(), "");
+                UsedAlphabet = UsedAlphabet.Replace(c.ToString(), "");
             }
             random = true;
+            SetButtonLetter();
         }
 
-        //Assign Button Letters
-        BtnLetter1 = buttons[0];
-        BtnLetter2 = buttons[1];
-        BtnLetter3 = buttons[2];
-        BtnLetter4 = buttons[3];
-        BtnLetter5 = buttons[4];
-        BtnLetter6 = buttons[5];
-        BtnLetter7 = buttons[6];
-        BtnLetter8 = buttons[7];
-        BtnLetter9 = buttons[8];
+
 
         //Change Letter On Button
         GameObject.Find("Button1").GetComponentInChildren<Text>().text = BtnLetter1;
@@ -126,7 +119,26 @@ public class Buttons : MonoBehaviour
 
     }
 
+    public void SetButtonLetter()
+    {
+        //Assign Button Letters
+        BtnLetter1 = buttons[0];
+        BtnLetter2 = buttons[1];
+        BtnLetter3 = buttons[2];
+        BtnLetter4 = buttons[3];
+        BtnLetter5 = buttons[4];
+        BtnLetter6 = buttons[5];
+        BtnLetter7 = buttons[6];
+        BtnLetter8 = buttons[7];
+        BtnLetter9 = buttons[8];
+    }
 
+    public void ResetButtonLetter()
+    {
+        buttons.Clear();
+        UsedAlphabet = Alphabet;
+        random = false;
+    }
     public bool StatusText()
     {
 
