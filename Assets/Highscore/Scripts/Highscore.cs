@@ -2,71 +2,69 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
-public class Highscore : MonoBehaviour
+public class HighScore : MonoBehaviour
 {
-    private string mainMenuScene = "MainMenu";
-
-    public static int player1Score;
-    public static int player2Score;
-    public static int singlePlayerScore;
-
-    public static int player1HighScore;
-    public static int player2HighScore;
+    private Text player1Text;
+    private Text player2Text;
+    private Text singleplayerText;
 
     private void Start()
     {
-        
+        player1Text = GameObject.Find("Player1Text").GetComponent<Text>();
+        player2Text = GameObject.Find("Player2Text").GetComponent<Text>();
+        singleplayerText = GameObject.Find("SingleplayerText").GetComponent<Text>();
+        player1Text.text = "";
+        player2Text.text = "";
+        singleplayerText.text = "";
+        ShowHighscores();
     }
 
-    //Använd den här i andra script för att lägga till score till spelarna. EXEMPEL: Highscore.AddScore(10);
-    public static void AddScore(int score)
+    private void ShowHighscores()
     {
-        if(ModeSelection.singlePlayer == true)
+        //Kollar om det är multiplayer
+        if (ModeSelection.singlePlayer == false)
         {
-            singlePlayerScore += score;
+            //Tittar vems highscore som är störst
+            player1Text.text = "";
+            player2Text.text = "";
+            singleplayerText.text = "";
+            if (PlayerPrefs.GetInt("HighScorePlayer1") >= PlayerPrefs.GetInt("HighScorePlayer2"))
+            {
+                player1Text.text = "Player 1's Highscore: " + PlayerPrefs.GetInt("HighScorePlayer1").ToString();
+                player2Text.text = "Player 2's Highscore: " + PlayerPrefs.GetInt("HighScorePlayer2").ToString();
+            }
+            else if (PlayerPrefs.GetInt("HighScorePlayer1") < PlayerPrefs.GetInt("HighScorePlayer2"))
+            {
+                player1Text.text = "Player 2's Highscore: " + PlayerPrefs.GetInt("HighScorePlayer2").ToString();
+                player2Text.text = "Player 1's Highscore: " + PlayerPrefs.GetInt("HighScorePlayer1").ToString();
+            }
+            if (PlayerPrefs.GetInt("HighScorePlayer1") <= 0)
+            {
+                player1Text.text = "";
+            }
+            if (PlayerPrefs.GetInt("HighScorePlayer2") <= 0)
+            {
+                player2Text.text = "";
+            }
         }
         else
         {
-            if(ModeSelection.player1Turn == true)
-            {
-                player1Score += score;
-            }
-            else
-            {
-                player2Score += score;
-            }
+            player1Text.text = "";
+            player2Text.text = "";
+            singleplayerText.text = "";
+            singleplayerText.text = "Ditt Highscore är: " + PlayerPrefs.GetInt("HighScoreSingleplayer").ToString();
         }
     }
 
-    //Sparar HighScores när ett spel är klart
-    public void FinishGame()
+    public void SingleplayerHighscores()
     {
-        ModeSelection.player1Turn = true;
-
-        //Tittar om det är multiplayer eller inte och sedan sparar scores some highscores om dem är större än highscoren
-        if(ModeSelection.singlePlayer == false) //MultiPlayer
-        {
-            if (player1Score > PlayerPrefs.GetInt("HighScorePlayer1"))
-            {
-                player1HighScore = player1Score;
-                PlayerPrefs.SetInt("HighScorePlayer1", player1HighScore);
-            }
-            if (player2Score > PlayerPrefs.GetInt("HighScorePlayer2"))
-            {
-                player2HighScore = player2Score;
-                PlayerPrefs.SetInt("HighScorePlayer2", player2HighScore);
-            }
-        }
-        else //Singleplayer
-        {
-            if(singlePlayerScore > PlayerPrefs.GetInt("HighScoreSingleplayer"))
-            {
-                PlayerPrefs.SetInt("HighScoreSingleplayer", singlePlayerScore);
-            }
-        }
-        
-        SceneManager.LoadScene(mainMenuScene);
+        ModeSelection.singlePlayer = true;
+        ShowHighscores();
+    }
+    public void MultiplayerHighscores()
+    {
+        ModeSelection.singlePlayer = false;
+        ShowHighscores();
     }
 }
