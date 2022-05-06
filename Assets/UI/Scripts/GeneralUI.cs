@@ -57,6 +57,7 @@ public class GeneralUI : MonoBehaviour
     {
         SceneManager.LoadScene(mainMenuScene);
         ModeSelection.player1Turn = true;
+        Timer.timerActivated = false;
         Score.player1Score = 0;
         Score.player2Score = 0;
     }
