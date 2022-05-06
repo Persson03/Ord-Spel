@@ -32,7 +32,7 @@ public class EndScreen : MonoBehaviour
     {
         if(ModeSelection.singlePlayer == true)
         {
-            Score1.text = "Ditt Highscore: " + Highscore.player1Score.ToString();
+            Score1.text = "Ditt Score: " + Highscore.singlePlayerScore.ToString();
             Score2.text = "";
         }
         else

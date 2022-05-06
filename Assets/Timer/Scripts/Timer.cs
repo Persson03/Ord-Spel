@@ -15,9 +15,10 @@ public class Timer : MonoBehaviour
     [HideInInspector]public float currentTime;
 
     private string endScreenScene = "EndScreen";
-    private bool timerActivated = false;
+    private string nextPlayerScene = "NextPlayer";
     private float elapsed = 0f;
 
+    private bool timerActivated = false;
 
 
     void Start()
@@ -27,6 +28,11 @@ public class Timer : MonoBehaviour
     }
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.H)) // MÅSTE TAS BORT
+        {
+            Highscore.AddScore(5);
+            Debug.Log("Score Added");
+        }
         Animation();
         Countdown();
         TimeChecker();
@@ -76,11 +82,27 @@ public class Timer : MonoBehaviour
 
     private void TimeChecker()
     {
-        if(currentTime <= 0)
+        if (currentTime <= 0)
         {
-            SceneManager.LoadScene(endScreenScene);
+            //När Timern går till 0 så kommer man till EndScreen
+            if(ModeSelection.singlePlayer == true)
+            {
+                SceneManager.LoadScene(endScreenScene);
+            }
+
+            //När timern går till 0 så kommer man till "Nästa Spelare Skärm" Om det är första spelarens tur / Annars till slut skärmen
+            else
+            {
+                if (ModeSelection.player1Turn == true)
+                {
+                    SceneManager.LoadScene(nextPlayerScene);
+                    ModeSelection.player1Turn = false;
+                }
+                else
+                {
+                    SceneManager.LoadScene(endScreenScene);
+                }
+            }
         }
     }
-
-
 }

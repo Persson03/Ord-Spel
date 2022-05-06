@@ -6,37 +6,67 @@ using UnityEngine.SceneManagement;
 
 public class Highscore : MonoBehaviour
 {
-
-    
+    private string mainMenuScene = "MainMenu";
 
     public static int player1Score;
     public static int player2Score;
+    public static int singlePlayerScore;
 
-    private bool player1turn;
+    public static int player1HighScore;
+    public static int player2HighScore;
 
     private void Start()
     {
-        player1turn = true;
+        
     }
 
-    public void AddScore(int score) //Använd den här i andra script för att lägga till score till spelarna. EXEMPEL: Highscore.AddScore(10);
+    //Använd den här i andra script för att lägga till score till spelarna. EXEMPEL: Highscore.AddScore(10);
+    public static void AddScore(int score)
     {
         if(ModeSelection.singlePlayer == true)
         {
-            player1Score += score;
+            singlePlayerScore += score;
         }
         else
         {
-            if (player1turn == true)
+            if(ModeSelection.player1Turn == true)
             {
                 player1Score += score;
-                player1turn = false;
             }
             else
             {
                 player2Score += score;
-                player1turn = true;
             }
         }
+    }
+
+    //Sparar HighScores när ett spel är klart
+    public void FinishGame()
+    {
+        ModeSelection.player1Turn = true;
+
+        //Tittar om det är multiplayer eller inte och sedan sparar scores some highscores om dem är större än highscoren
+        if(ModeSelection.singlePlayer == false) //MultiPlayer
+        {
+            if (player1Score > PlayerPrefs.GetInt("HighScorePlayer1"))
+            {
+                player1HighScore = player1Score;
+                PlayerPrefs.SetInt("HighScorePlayer1", player1HighScore);
+            }
+            if (player2Score > PlayerPrefs.GetInt("HighScorePlayer2"))
+            {
+                player2HighScore = player2Score;
+                PlayerPrefs.SetInt("HighScorePlayer2", player2HighScore);
+            }
+        }
+        else //Singleplayer
+        {
+            if(singlePlayerScore > PlayerPrefs.GetInt("HighScoreSingleplayer"))
+            {
+                PlayerPrefs.SetInt("HighScoreSingleplayer", singlePlayerScore);
+            }
+        }
+        
+        SceneManager.LoadScene(mainMenuScene);
     }
 }

@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class ModeSelection : MonoBehaviour
 {
     [HideInInspector] public static bool singlePlayer;
+    [HideInInspector] public static bool player1Turn;
 
     [Header("Scene Strings")]
     public string singleplayerMode;
@@ -20,7 +21,8 @@ public class ModeSelection : MonoBehaviour
 
     public void PlayMultiplayer()
     {
-        SceneManager.LoadScene(multiplayerMode);
         singlePlayer = false;
+        player1Turn = true;
+        SceneManager.LoadScene(multiplayerMode);
     }
 }

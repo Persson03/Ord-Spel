@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 1724857609}
   - component: {fileID: 860308087}
   - component: {fileID: 2163680586970865276}
+  - component: {fileID: 4513413275144313976}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: MainCamera
@@ -96,13 +97,11 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 173159522995175722}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fc298d45a618f314a9fb4090f1dc7a23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pauseMenu: {fileID: 0}
-  settingsMenu: {fileID: 0}
 --- !u!114 &6008926844857398422
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -261,7 +260,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52adf56b4e604254e9088880a45784e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  endScreenScene: EndScreen
-  timer: {fileID: 860308087}
-  highScore1: {fileID: 0}
-  introductionPlayer1: 'Spelare 1 highscore: '
+--- !u!114 &4513413275144313976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 173159522995175722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 302448e2c12e8564e880775f57d533af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
