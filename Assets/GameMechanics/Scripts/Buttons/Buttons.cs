@@ -16,7 +16,10 @@ public class Buttons : MonoBehaviour
     public string CurrentLetter;
 
     //Button Letters
-    string Alphabet;
+    string Alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZÅÄÖ";
+
+    //checks if letters are randomized
+    bool random = false;
 
     List<string> buttons = new List<string>();
     public string BtnLetter1;
@@ -28,6 +31,7 @@ public class Buttons : MonoBehaviour
     public string BtnLetter7;
     public string BtnLetter8;
     public string BtnLetter9;
+
     bool EmptyGuess;
     bool RestartGuess;
 
@@ -51,12 +55,17 @@ public class Buttons : MonoBehaviour
         Guess = GameObject.Find("Guess").GetComponent<Text>().text;
         Answer = GameObject.Find("Answer").GetComponent<Text>().text;
 
+
         //Randomize Button Letters
-        Alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZÅÄÖ";
-        for (int i = 0; i < 9; i++)
+        if (random == false)
         {
-            char c = Alphabet[Random.Range(0, Alphabet.Length)];
-            buttons.Add(char.ToString(c));
+            for (int i = 0; i < 9; i++)
+            {
+                char c = Alphabet[Random.Range(0, Alphabet.Length)];
+                buttons.Add(char.ToString(c));
+                Alphabet = Alphabet.Replace(c.ToString(), "");
+            }
+            random = true;
         }
 
         //Assign Button Letters
