@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HighScore : MonoBehaviour
+public class Highscore : MonoBehaviour
 {
     private Text player1Text;
     private Text player2Text;
