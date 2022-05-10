@@ -118,6 +118,13 @@ public class Buttons : MonoBehaviour
             }
         }
 
+        //Remove letter on backspace
+        if (Input.GetKeyDown(KeyCode.Backspace) && Guess.Length != 0)
+        {
+            GameObject.Find("Guess").GetComponent<Text>().text = Guess.Remove(Guess.Length - 1);           
+            Debug.Log(Guess);
+        }
+
     }
 
     public void SetButtonLetter()
