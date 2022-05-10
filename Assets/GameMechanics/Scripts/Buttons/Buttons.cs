@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
+using UnityEngine.EventSystems;
 
 public class Buttons : MonoBehaviour
 {
+    [SerializeField] GameObject Setting;
 
     //Answer And Guess
     string Guess;
@@ -47,7 +49,6 @@ public class Buttons : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       
     }
 
     // Update is called once per frame
@@ -101,20 +102,23 @@ public class Buttons : MonoBehaviour
 
 
         //Check For Final Guess
-        if (Input.GetMouseButtonDown(1) && EmptyGuess == false)
+        if (Input.GetKeyDown(Setting.GetComponent<Settings>().setting))
         {
 
+            if (EmptyGuess == false)
+            {
 
-            if (StatusText() == false && Guess.Length > 1)
-            {
-                GameObject.Find("Answer").GetComponent<Text>().text = Guess;
-                GameObject.Find("Guess").GetComponent<Text>().text = null;
-                EmptyGuess = true;
-                StatusText();
-            } 
-            else if (Guess.Length <= 1)
-            {
-                GameObject.Find("StatusText").GetComponent<Text>().text = "MINST TVÅ BOKSTÄVER!";
+                if (StatusText() == false && Guess.Length > 1)
+                {
+                    GameObject.Find("Answer").GetComponent<Text>().text = Guess;
+                    GameObject.Find("Guess").GetComponent<Text>().text = null;
+                    EmptyGuess = true;
+                    StatusText();
+                }
+                else if (Guess.Length <= 1)
+                {
+                    GameObject.Find("StatusText").GetComponent<Text>().text = "MINST TVÅ BOKSTÄVER!";
+                }
             }
         }
 
@@ -179,6 +183,12 @@ public class Buttons : MonoBehaviour
         GameObject.Find("Guess").GetComponent<Text>().text += CurrentLetter;
         EmptyGuess = false;
 
+        EventSystem.current.GetComponent<EventSystem>().SetSelectedGameObject(null);
+    }
+
+    public void GameSettings()
+    {
+        GameObject.Find("SubmitAnswer").GetComponentInChildren<Text>().text = "hej";
     }
 
 }

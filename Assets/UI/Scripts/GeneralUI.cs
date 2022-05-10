@@ -14,6 +14,7 @@ public class GeneralUI : MonoBehaviour
 
     private void Start()
     {
+
         pauseMenu = GameObject.Find("Paus Menu").GetComponent<Canvas>();
         settingsMenu = GameObject.Find("Settings Menu").GetComponent<Canvas>();
         pauseMenu.enabled = false; // Så Paus Menyn alltid startar stängd

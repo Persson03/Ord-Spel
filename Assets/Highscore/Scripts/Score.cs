@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class Score : MonoBehaviour
 {
+
+
     private string mainMenuScene = "MainMenu";
 
     public static int player1Score;
@@ -17,7 +19,7 @@ public class Score : MonoBehaviour
 
     private void Start()
     {
-
+        
     }
 
     //Använd den här i andra script för att lägga till score till spelarna. EXEMPEL: Highscore.AddScore(10);

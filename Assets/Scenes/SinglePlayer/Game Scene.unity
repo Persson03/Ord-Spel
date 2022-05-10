@@ -121,6 +121,12 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &227356462 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5401303762102635313, guid: f9d4886e2811ef64992c858ce9265fdb,
+    type: 3}
+  m_PrefabInstance: {fileID: 2083275286}
+  m_PrefabAsset: {fileID: 0}
 --- !u!223 &243372759 stripped
 Canvas:
   m_CorrespondingSourceObject: {fileID: 8492549354490825311, guid: f9d4886e2811ef64992c858ce9265fdb,
@@ -494,6 +500,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4127804465430488391, guid: 52151ad12b9295947bdd2498f0c47316,
+        type: 3}
+      propertyPath: Setting
+      value: 
+      objectReference: {fileID: 227356462}
     - target: {fileID: 4127804467207064038, guid: 52151ad12b9295947bdd2498f0c47316,
         type: 3}
       propertyPath: m_Pivot.x
