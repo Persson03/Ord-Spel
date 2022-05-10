@@ -4,10 +4,13 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
 using UnityEngine.EventSystems;
+using System;
 
 public class Buttons : MonoBehaviour
 {
     [SerializeField] GameObject Setting;
+
+    KeyCode SettingsSubmit;
 
     //Answer And Guess
     string Guess;
@@ -49,11 +52,14 @@ public class Buttons : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        SettingsSubmit = (KeyCode)Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("Setting1"));
+
         Guess = GameObject.Find("Guess").GetComponent<Text>().text;
         Answer = GameObject.Find("Answer").GetComponent<Text>().text;
 
@@ -63,7 +69,7 @@ public class Buttons : MonoBehaviour
         {
             for (int i = 0; i < 9; i++)
             {
-                char c = UsedAlphabet[Random.Range(0, UsedAlphabet.Length)];
+                char c = UsedAlphabet[UnityEngine.Random.Range(0, UsedAlphabet.Length)];
                 buttons.Add(char.ToString(c));
                 UsedAlphabet = UsedAlphabet.Replace(c.ToString(), "");
             }
@@ -102,7 +108,7 @@ public class Buttons : MonoBehaviour
 
 
         //Check For Final Guess
-        if (Input.GetKeyDown(Setting.GetComponent<Settings>().setting))
+        if (Input.GetKeyDown(SettingsSubmit) && EmptyGuess == false)
         {
 
             if (EmptyGuess == false)

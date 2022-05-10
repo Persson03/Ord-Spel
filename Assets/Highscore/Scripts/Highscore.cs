@@ -11,6 +11,7 @@ public class Highscore : MonoBehaviour
 
     private void Start()
     {
+
         player1Text = GameObject.Find("Player1Text").GetComponent<Text>();
         player2Text = GameObject.Find("Player2Text").GetComponent<Text>();
         singleplayerText = GameObject.Find("SingleplayerText").GetComponent<Text>();
