@@ -17,7 +17,7 @@ public class Score : MonoBehaviour
 
     private void Start()
     {
-        
+
     }
 
     //Använd den här i andra script för att lägga till score till spelarna. EXEMPEL: Highscore.AddScore(10);

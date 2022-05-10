@@ -47,7 +47,7 @@ public class Buttons : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+       
     }
 
     // Update is called once per frame
@@ -88,6 +88,9 @@ public class Buttons : MonoBehaviour
         {
             GameObject.Find("Answer").GetComponent<Text>().color = Color.green;
             UsedWords.Add(Answer);
+
+            //Add Score
+            Score.AddScore(Answer.Length);
         }
 
         //check if answer does not contain valid word
@@ -95,8 +98,6 @@ public class Buttons : MonoBehaviour
         {
             GameObject.Find("Answer").GetComponent<Text>().color = Color.red;
         }
-
-
 
 
         //Check For Final Guess
