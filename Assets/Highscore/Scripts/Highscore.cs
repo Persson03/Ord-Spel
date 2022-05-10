@@ -2,41 +2,69 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
-public class Highscore : MonoBehaviour
+public class HighScore : MonoBehaviour
 {
-
-    
-
-    public static int player1Score;
-    public static int player2Score;
-
-    private bool player1turn;
+    private Text player1Text;
+    private Text player2Text;
+    private Text singleplayerText;
 
     private void Start()
     {
-        player1turn = true;
+        player1Text = GameObject.Find("Player1Text").GetComponent<Text>();
+        player2Text = GameObject.Find("Player2Text").GetComponent<Text>();
+        singleplayerText = GameObject.Find("SingleplayerText").GetComponent<Text>();
+        player1Text.text = "";
+        player2Text.text = "";
+        singleplayerText.text = "";
+        ShowHighscores();
     }
 
-    public void AddScore(int score) //Använd den här i andra script för att lägga till score till spelarna. EXEMPEL: Highscore.AddScore(10);
+    private void ShowHighscores()
     {
-        if(ModeSelection.singlePlayer == true)
+        //Kollar om det är multiplayer
+        if (ModeSelection.singlePlayer == false)
         {
-            player1Score += score;
+            //Tittar vems highscore som är störst
+            player1Text.text = "";
+            player2Text.text = "";
+            singleplayerText.text = "";
+            if (PlayerPrefs.GetInt("HighScorePlayer1") >= PlayerPrefs.GetInt("HighScorePlayer2"))
+            {
+                player1Text.text = "Player 1's Highscore: " + PlayerPrefs.GetInt("HighScorePlayer1").ToString();
+                player2Text.text = "Player 2's Highscore: " + PlayerPrefs.GetInt("HighScorePlayer2").ToString();
+            }
+            else if (PlayerPrefs.GetInt("HighScorePlayer1") < PlayerPrefs.GetInt("HighScorePlayer2"))
+            {
+                player1Text.text = "Player 2's Highscore: " + PlayerPrefs.GetInt("HighScorePlayer2").ToString();
+                player2Text.text = "Player 1's Highscore: " + PlayerPrefs.GetInt("HighScorePlayer1").ToString();
+            }
+            if (PlayerPrefs.GetInt("HighScorePlayer1") <= 0)
+            {
+                player1Text.text = "";
+            }
+            if (PlayerPrefs.GetInt("HighScorePlayer2") <= 0)
+            {
+                player2Text.text = "";
+            }
         }
         else
         {
-            if (player1turn == true)
-            {
-                player1Score += score;
-                player1turn = false;
-            }
-            else
-            {
-                player2Score += score;
-                player1turn = true;
-            }
+            player1Text.text = "";
+            player2Text.text = "";
+            singleplayerText.text = "";
+            singleplayerText.text = "Ditt Highscore är: " + PlayerPrefs.GetInt("HighScoreSingleplayer").ToString();
         }
+    }
+
+    public void SingleplayerHighscores()
+    {
+        ModeSelection.singlePlayer = true;
+        ShowHighscores();
+    }
+    public void MultiplayerHighscores()
+    {
+        ModeSelection.singlePlayer = false;
+        ShowHighscores();
     }
 }

@@ -32,13 +32,13 @@ public class EndScreen : MonoBehaviour
     {
         if(ModeSelection.singlePlayer == true)
         {
-            Score1.text = "Ditt Highscore: " + Highscore.player1Score.ToString();
+            Score1.text = "Ditt Score: " + Score.singlePlayerScore.ToString();
             Score2.text = "";
         }
         else
         {
-            Score1.text = introductionPlayer1 + Highscore.player1Score.ToString();
-            Score2.text = introductionPlayer2 + Highscore.player2Score.ToString();
+            Score1.text = introductionPlayer1 + Score.player1Score.ToString();
+            Score2.text = introductionPlayer2 + Score.player2Score.ToString();
         }
     }
 }

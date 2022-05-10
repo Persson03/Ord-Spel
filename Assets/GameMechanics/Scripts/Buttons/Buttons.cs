@@ -16,7 +16,11 @@ public class Buttons : MonoBehaviour
     public string CurrentLetter;
 
     //Button Letters
-    string Alphabet;
+    string UsedAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZÅÄÖ";
+    string Alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZÅÄÖ";
+
+    //checks if letters are randomized
+    bool random = false;
 
     List<string> buttons = new List<string>();
     public string BtnLetter1;
@@ -28,7 +32,9 @@ public class Buttons : MonoBehaviour
     public string BtnLetter7;
     public string BtnLetter8;
     public string BtnLetter9;
+
     bool EmptyGuess;
+    bool RestartGuess;
 
     //Valid Words
     HashSet<string> ValidWords = new HashSet<string>(System.IO.File.ReadAllLines("WordList.txt"));
@@ -50,24 +56,21 @@ public class Buttons : MonoBehaviour
         Guess = GameObject.Find("Guess").GetComponent<Text>().text;
         Answer = GameObject.Find("Answer").GetComponent<Text>().text;
 
+
         //Randomize Button Letters
-        Alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZÅÄÖ";
-        for (int i = 0; i < 9; i++)
+        if (random == false)
         {
-            char c = Alphabet[Random.Range(0, Alphabet.Length)];
-            buttons.Add(char.ToString(c));
+            for (int i = 0; i < 9; i++)
+            {
+                char c = UsedAlphabet[Random.Range(0, UsedAlphabet.Length)];
+                buttons.Add(char.ToString(c));
+                UsedAlphabet = UsedAlphabet.Replace(c.ToString(), "");
+            }
+            random = true;
+            SetButtonLetter();
         }
 
-        //Assign Button Letters
-        BtnLetter1 = buttons[0];
-        BtnLetter2 = buttons[1];
-        BtnLetter3 = buttons[2];
-        BtnLetter4 = buttons[3];
-        BtnLetter5 = buttons[4];
-        BtnLetter6 = buttons[5];
-        BtnLetter7 = buttons[6];
-        BtnLetter8 = buttons[7];
-        BtnLetter9 = buttons[8];
+
 
         //Change Letter On Button
         GameObject.Find("Button1").GetComponentInChildren<Text>().text = BtnLetter1;
@@ -99,31 +102,56 @@ public class Buttons : MonoBehaviour
         //Check For Final Guess
         if (Input.GetMouseButtonDown(1) && EmptyGuess == false)
         {
-            if (StatusText() == false)
+
+
+            if (StatusText() == false && Guess.Length > 1)
             {
                 GameObject.Find("Answer").GetComponent<Text>().text = Guess;
                 GameObject.Find("Guess").GetComponent<Text>().text = null;
                 EmptyGuess = true;
                 StatusText();
-            } else if (StatusText() == true)
+            } 
+            else if (Guess.Length <= 1)
             {
-                StatusText();
+                GameObject.Find("StatusText").GetComponent<Text>().text = "MINST TVÅ BOKSTÄVER!";
             }
-                
         }
 
     }
 
+    public void SetButtonLetter()
+    {
+        //Assign Button Letters
+        BtnLetter1 = buttons[0];
+        BtnLetter2 = buttons[1];
+        BtnLetter3 = buttons[2];
+        BtnLetter4 = buttons[3];
+        BtnLetter5 = buttons[4];
+        BtnLetter6 = buttons[5];
+        BtnLetter7 = buttons[6];
+        BtnLetter8 = buttons[7];
+        BtnLetter9 = buttons[8];
+    }
 
+    public void ResetButtonLetter()
+    {
+        buttons.Clear();
+        UsedAlphabet = Alphabet;
+        random = false;
+    }
     public bool StatusText()
     {
+
+
         if (Guess == Answer && Answer != "")
         {
             GameObject.Find("StatusText").GetComponent<Text>().text = "SKRIV NÅGOT NYTT!";
+            RestartGuess = true;
             return true;
         } else if (UsedWords.Contains(Guess))
         {
             GameObject.Find("StatusText").GetComponent<Text>().text = "REDAN ANVÄND!";
+            RestartGuess = true;
             return true;
         }
         else
@@ -135,15 +163,12 @@ public class Buttons : MonoBehaviour
 
     public void ChangeLetter()
     {
-        if (GameObject.Find("Guess").GetComponent<Text>().text != null)
+        if (RestartGuess == true)
         {
-            GameObject.Find("Guess").GetComponent<Text>().text = Guess + CurrentLetter;
+            GameObject.Find("Guess").GetComponent<Text>().text = "";
+            RestartGuess = false;
         }
-        else if (GameObject.Find("Guess").GetComponent<Text>().text == null)
-        {
-            GameObject.Find("Guess").GetComponent<Text>().text = CurrentLetter;
-        }
-
+        GameObject.Find("Guess").GetComponent<Text>().text += CurrentLetter;
         EmptyGuess = false;
 
     }

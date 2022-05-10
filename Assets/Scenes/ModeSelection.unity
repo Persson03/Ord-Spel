@@ -387,5 +387,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7796139327024111351, guid: 7440ed709ad517b4fb6a83d0a9ad4e76,
+        type: 3}
+      propertyPath: multiplayerMode
+      value: ChooseName
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7440ed709ad517b4fb6a83d0a9ad4e76, type: 3}
