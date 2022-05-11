@@ -62,13 +62,15 @@ public class Highscore : MonoBehaviour
     {
         GameObject OBJ = Instantiate(highScoreObject) as GameObject;
         OBJ.transform.SetParent(scoresContainer.transform);
+
+        //Gör en loop där den sätter ett namn och värde på varje gameobject som instantiatar
     }
 
     private void ClearHighScores()
     {
         for(int i = 0; i < GameObject.FindGameObjectsWithTag("highscore").Length; i++)
             {
-                //if(GameObject.FindGameObjectsWithTag("highscore")[i].GetComponent<SelfDestruct>()) // FIXA MER HÄR DIREKT ERRORS AAHHHHHH
+                //if(GameObject.FindGameObjectsWithTag("highscore")[i].GetComponent<SelfDestruct>()) // FIXA MER HÄR DIREKT ERRORS AAHHHHHH //
             }
     }
         
