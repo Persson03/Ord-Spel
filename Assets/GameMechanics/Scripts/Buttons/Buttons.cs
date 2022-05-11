@@ -3,9 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
+using UnityEngine.EventSystems;
+using System;
 
 public class Buttons : MonoBehaviour
 {
+    [SerializeField] GameObject Setting;
+
+    KeyCode SettingSubmit;
+    KeyCode SettingRemove;
 
     //Answer And Guess
     string Guess;
@@ -53,6 +59,9 @@ public class Buttons : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        SettingSubmit = (KeyCode)Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("SubmitSetting"));
+        SettingRemove = (KeyCode)Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("RemoveSetting"));
+
         Guess = GameObject.Find("Guess").GetComponent<Text>().text;
         Answer = GameObject.Find("Answer").GetComponent<Text>().text;
 
@@ -62,7 +71,7 @@ public class Buttons : MonoBehaviour
         {
             for (int i = 0; i < 9; i++)
             {
-                char c = UsedAlphabet[Random.Range(0, UsedAlphabet.Length)];
+                char c = UsedAlphabet[UnityEngine.Random.Range(0, UsedAlphabet.Length)];
                 buttons.Add(char.ToString(c));
                 UsedAlphabet = UsedAlphabet.Replace(c.ToString(), "");
             }
@@ -88,6 +97,9 @@ public class Buttons : MonoBehaviour
         {
             GameObject.Find("Answer").GetComponent<Text>().color = Color.green;
             UsedWords.Add(Answer);
+
+            //Add Score
+            Score.AddScore(Answer.Length);
         }
 
         //check if answer does not contain valid word
@@ -97,24 +109,31 @@ public class Buttons : MonoBehaviour
         }
 
 
-
-
         //Check For Final Guess
-        if (Input.GetMouseButtonDown(1) && EmptyGuess == false)
+        if (Input.GetKeyDown(SettingSubmit) && EmptyGuess == false)
         {
 
+            if (EmptyGuess == false)
+            {
 
-            if (StatusText() == false && Guess.Length > 1)
-            {
-                GameObject.Find("Answer").GetComponent<Text>().text = Guess;
-                GameObject.Find("Guess").GetComponent<Text>().text = null;
-                EmptyGuess = true;
-                StatusText();
-            } 
-            else if (Guess.Length <= 1)
-            {
-                GameObject.Find("StatusText").GetComponent<Text>().text = "MINST TVÅ BOKSTÄVER!";
+                if (StatusText() == false && Guess.Length > 1)
+                {
+                    GameObject.Find("Answer").GetComponent<Text>().text = Guess;
+                    GameObject.Find("Guess").GetComponent<Text>().text = null;
+                    EmptyGuess = true;
+                    StatusText();
+                }
+                else if (Guess.Length <= 1)
+                {
+                    GameObject.Find("StatusText").GetComponent<Text>().text = "MINST TVÅ BOKSTÄVER!";
+                }
             }
+        }
+
+        //Remove letter on backspace
+        if (Input.GetKeyDown(SettingRemove) && Guess.Length != 0)
+        {
+            GameObject.Find("Guess").GetComponent<Text>().text = Guess.Remove(Guess.Length - 1);           
         }
 
     }
@@ -171,6 +190,12 @@ public class Buttons : MonoBehaviour
         GameObject.Find("Guess").GetComponent<Text>().text += CurrentLetter;
         EmptyGuess = false;
 
+        EventSystem.current.GetComponent<EventSystem>().SetSelectedGameObject(null);
+    }
+
+    public void GameSettings()
+    {
+        GameObject.Find("SubmitAnswer").GetComponentInChildren<Text>().text = "hej";
     }
 
 }
