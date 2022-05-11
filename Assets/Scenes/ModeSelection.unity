@@ -277,6 +277,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1603628661, guid: 7440ed709ad517b4fb6a83d0a9ad4e76, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -408
+      objectReference: {fileID: 0}
     - target: {fileID: 37388878330744191, guid: 7440ed709ad517b4fb6a83d0a9ad4e76,
         type: 3}
       propertyPath: m_Name
@@ -387,6 +391,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6272279310713698709, guid: 7440ed709ad517b4fb6a83d0a9ad4e76,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 6272279310713698709, guid: 7440ed709ad517b4fb6a83d0a9ad4e76,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -390
+      objectReference: {fileID: 0}
+    - target: {fileID: 6272279311727962066, guid: 7440ed709ad517b4fb6a83d0a9ad4e76,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -390
+      objectReference: {fileID: 0}
     - target: {fileID: 7796139327024111351, guid: 7440ed709ad517b4fb6a83d0a9ad4e76,
         type: 3}
       propertyPath: multiplayerMode
@@ -394,3 +413,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7440ed709ad517b4fb6a83d0a9ad4e76, type: 3}
+--- !u!1 &7796139327024111350 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 152027426, guid: 7440ed709ad517b4fb6a83d0a9ad4e76,
+    type: 3}
+  m_PrefabInstance: {fileID: 7796139327024111349}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7796139327024111351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7796139327024111350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c014e7636c9592248a093f303ad18d34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  borat: {fileID: 21300000, guid: 7c1a1761791282b478fd0904f46e7ce4, type: 3}

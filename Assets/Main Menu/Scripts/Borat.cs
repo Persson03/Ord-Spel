@@ -4,19 +4,21 @@ using UnityEngine.EventSystems;
 public class Borat : MonoBehaviour
 {
 
-    bool BoratEnable = false;
+    public static bool BoratEnable = false;
 
     [SerializeField] GameObject borat;
     // Start is called before the first frame update
-    void Start()
+    public void Start()
     {
-        borat.SetActive(false);
+        if (BoratEnable == false)
+        {
+            borat.SetActive(false);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-
     }
 
     public void EnableBorat()
@@ -35,11 +37,13 @@ public class Borat : MonoBehaviour
         if (BoratEnable == true)
         {
             borat.SetActive(true);
+            this.gameObject.SetActive(false);
         }
         else
         {
             borat.SetActive(false);
         }
+
 
         EventSystem.current.GetComponent<EventSystem>().SetSelectedGameObject(null);
     }

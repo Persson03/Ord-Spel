@@ -132,6 +132,7 @@ GameObject:
   - component: {fileID: 202611638}
   - component: {fileID: 202611640}
   - component: {fileID: 202611639}
+  - component: {fileID: 202611641}
   m_Layer: 5
   m_Name: BG
   m_TagString: Untagged
@@ -195,6 +196,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 202611637}
   m_CullTransparentMesh: 0
+--- !u!114 &202611641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 202611637}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c014e7636c9592248a093f303ad18d34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  borat: {fileID: 21300000, guid: 75bf1fb81f1ee89409a7e1c727596b05, type: 3}
 --- !u!1 &241756253
 GameObject:
   m_ObjectHideFlags: 0
@@ -775,45 +789,15 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 37388878356342565, guid: f9d4886e2811ef64992c858ce9265fdb,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 478011309703241027, guid: f9d4886e2811ef64992c858ce9265fdb,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2376763393593472174, guid: f9d4886e2811ef64992c858ce9265fdb,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3588184548965025204, guid: f9d4886e2811ef64992c858ce9265fdb,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5432336269221174054, guid: f9d4886e2811ef64992c858ce9265fdb,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1167333823}
-    - target: {fileID: 5432336269221174054, guid: f9d4886e2811ef64992c858ce9265fdb,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ClosePauseMenu
-      objectReference: {fileID: 0}
     - target: {fileID: 6740529950211369473, guid: f9d4886e2811ef64992c858ce9265fdb,
         type: 3}
       propertyPath: m_Name
       value: General UI
-      objectReference: {fileID: 0}
-    - target: {fileID: 6740529950211369473, guid: f9d4886e2811ef64992c858ce9265fdb,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6898476682645552418, guid: f9d4886e2811ef64992c858ce9265fdb,
         type: 3}
@@ -875,41 +859,21 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1167333823}
-    - target: {fileID: 7870674184204415691, guid: f9d4886e2811ef64992c858ce9265fdb,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: CloseSettingsMenu
-      objectReference: {fileID: 0}
     - target: {fileID: 8438632850066525628, guid: f9d4886e2811ef64992c858ce9265fdb,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1167333823}
-    - target: {fileID: 8438632850066525628, guid: f9d4886e2811ef64992c858ce9265fdb,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: QuitToMain
-      objectReference: {fileID: 0}
-    - target: {fileID: 8438632850580173160, guid: f9d4886e2811ef64992c858ce9265fdb,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1167333823}
     - target: {fileID: 8438632850580173160, guid: f9d4886e2811ef64992c858ce9265fdb,
         type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OpenSettingsMenu
-      objectReference: {fileID: 0}
-    - target: {fileID: 8438632851421704160, guid: f9d4886e2811ef64992c858ce9265fdb,
-        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1167333823}
     - target: {fileID: 8438632851421704160, guid: f9d4886e2811ef64992c858ce9265fdb,
         type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ClosePauseMenu
-      objectReference: {fileID: 0}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1167333823}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f9d4886e2811ef64992c858ce9265fdb, type: 3}
 --- !u!1 &1043107051
