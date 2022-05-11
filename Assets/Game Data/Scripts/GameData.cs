@@ -9,6 +9,8 @@ public class GameData
     public string[] playerName;
     public int[] playerHighScore;
     public int singlePlayerHighScore;
+
+    
     public void AddName(string name, int highScore)
     {
         if(!playerName.ToList().Contains(name))

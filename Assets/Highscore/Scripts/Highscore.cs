@@ -12,6 +12,7 @@ public class Highscore : MonoBehaviour
     private GameManager gameManager;
 
     [SerializeField]private GameObject highScoreObject;
+    [SerializeField]private GameObject scoresContainer;
 
     private void Start()
     {
@@ -34,10 +35,14 @@ public class Highscore : MonoBehaviour
             int numberOfHighScores;
             numberOfHighScores = gameManager.data.playerName.Length;
 
-            //Här ska fixas saker
+            for(int i = 0; i < numberOfHighScores; i++)
+            {
+                InstantiateScores();
+            }
         }
         else
         {
+            
             singleplayerText.text = "Ditt Highscore är: " + PlayerPrefs.GetInt("HighScoreSingleplayer").ToString();
         }
     }
@@ -52,4 +57,20 @@ public class Highscore : MonoBehaviour
         ModeSelection.singlePlayer = false;
         ShowHighscores();
     }
+
+    private void InstantiateScores()
+    {
+        GameObject OBJ = Instantiate(highScoreObject) as GameObject;
+        OBJ.transform.SetParent(scoresContainer.transform);
+    }
+
+    private void ClearHighScores()
+    {
+        for(int i = 0; i < GameObject.FindGameObjectsWithTag("highscore").Length; i++)
+            {
+                //if(GameObject.FindGameObjectsWithTag("highscore")[i].GetComponent<SelfDestruct>()) // FIXA MER HÄR DIREKT ERRORS AAHHHHHH
+            }
+    }
+        
+      
 }
