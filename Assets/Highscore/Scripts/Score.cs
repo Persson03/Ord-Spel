@@ -60,6 +60,9 @@ public class Score : MonoBehaviour
                 player2HighScore = player2Score;
                 PlayerPrefs.SetInt("HighScorePlayer2", player2HighScore);
             }
+
+            player1Score = 0;
+            player2Score = 0;
         }
         else //Singleplayer
         {
@@ -67,6 +70,7 @@ public class Score : MonoBehaviour
             {
                 PlayerPrefs.SetInt("HighScoreSingleplayer", singlePlayerScore);
             }
+            singlePlayerScore = 0;
         }
         
         SceneManager.LoadScene(mainMenuScene);

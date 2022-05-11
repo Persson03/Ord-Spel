@@ -10,16 +10,22 @@ public class Settings : MonoBehaviour
     bool Changing = false;
     bool ChangingDone = false;
 
+    string CurrentSetting;
+
     [SerializeField] GameObject Done;
-    [SerializeField] Text Setting;
+    [SerializeField] Text SubmitSettingText;
     [SerializeField] Text StatusText;
+    [SerializeField] Text RemoveSettingText;
     public KeyCode setting = KeyCode.Space;
     // Start is called before the first frame update
     void Start()
     {
         //Deafult Setting For Submitting Guess
-        PlayerPrefs.SetString("Setting1", "Mouse1");
-        Setting.text = "Mouse1";
+        PlayerPrefs.SetString("SubmitSetting", "Mouse1");
+        SubmitSettingText.text = "Mouse1";
+
+        PlayerPrefs.SetString("RemoveSetting", "Backspace");
+        RemoveSettingText.text = ("Backspace");
 
         StatusText.gameObject.SetActive(false);
     }
@@ -27,7 +33,7 @@ public class Settings : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(setting.ToString());
+        Debug.Log(CurrentSetting);
         if (Changing == true)
         {
             foreach (KeyCode kcode in Enum.GetValues(typeof(KeyCode)))
@@ -42,10 +48,19 @@ public class Settings : MonoBehaviour
         }
         if (ChangingDone == true)
         {
-            Setting.text = setting.ToString();
-            PlayerPrefs.SetString("Setting1", setting.ToString());
+            if (CurrentSetting == "SubmitSetting")
+            {
+                SubmitSettingText.text = setting.ToString();
+                PlayerPrefs.SetString("SubmitSetting", setting.ToString());
+            }
+            else if (CurrentSetting == "RemoveSetting")
+            {
+                RemoveSettingText.text = setting.ToString();
+                PlayerPrefs.SetString("RemoveSetting", setting.ToString());
+            }
+            ChangingDone = false;
+
         }
-        Debug.Log(Changing);
     }
 
     public void PlayerSettings()
@@ -60,10 +75,24 @@ public class Settings : MonoBehaviour
     {
         ChangingDone = true;
         Changing = false;
-        Debug.Log(ChangingDone);
         Done.gameObject.SetActive(false);
         StatusText.gameObject.SetActive(false);
         StatusText.text = "Tryck på knappen du vill använda";
         EventSystem.current.GetComponent<EventSystem>().SetSelectedGameObject(null);
+    }
+
+    public void RemoveSetting()
+    {
+        CurrentSetting = "RemoveSetting";
+    }
+
+    public void SubmitSetting()
+    {
+        CurrentSetting = "SubmitSetting";
+    }
+
+    public void ClearSetting()
+    {
+        CurrentSetting = null;
     }
 }

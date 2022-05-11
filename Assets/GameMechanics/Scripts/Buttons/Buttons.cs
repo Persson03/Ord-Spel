@@ -10,7 +10,8 @@ public class Buttons : MonoBehaviour
 {
     [SerializeField] GameObject Setting;
 
-    KeyCode SettingsSubmit;
+    KeyCode SettingSubmit;
+    KeyCode SettingRemove;
 
     //Answer And Guess
     string Guess;
@@ -58,7 +59,8 @@ public class Buttons : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        SettingsSubmit = (KeyCode)Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("Setting1"));
+        SettingSubmit = (KeyCode)Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("SubmitSetting"));
+        SettingRemove = (KeyCode)Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("RemoveSetting"));
 
         Guess = GameObject.Find("Guess").GetComponent<Text>().text;
         Answer = GameObject.Find("Answer").GetComponent<Text>().text;
@@ -108,7 +110,7 @@ public class Buttons : MonoBehaviour
 
 
         //Check For Final Guess
-        if (Input.GetKeyDown(SettingsSubmit) && EmptyGuess == false)
+        if (Input.GetKeyDown(SettingSubmit) && EmptyGuess == false)
         {
 
             if (EmptyGuess == false)
@@ -129,10 +131,9 @@ public class Buttons : MonoBehaviour
         }
 
         //Remove letter on backspace
-        if (Input.GetKeyDown(KeyCode.Backspace) && Guess.Length != 0)
+        if (Input.GetKeyDown(SettingRemove) && Guess.Length != 0)
         {
             GameObject.Find("Guess").GetComponent<Text>().text = Guess.Remove(Guess.Length - 1);           
-            Debug.Log(Guess);
         }
 
     }
