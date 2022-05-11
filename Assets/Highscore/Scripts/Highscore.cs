@@ -9,9 +9,13 @@ public class Highscore : MonoBehaviour
     private Text player2Text;
     private Text singleplayerText;
 
+    private GameManager gameManager;
+
+    [SerializeField]private GameObject highScoreObject;
+
     private void Start()
     {
-
+        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
         player1Text = GameObject.Find("Player1Text").GetComponent<Text>();
         player2Text = GameObject.Find("Player2Text").GetComponent<Text>();
         singleplayerText = GameObject.Find("SingleplayerText").GetComponent<Text>();
@@ -26,34 +30,14 @@ public class Highscore : MonoBehaviour
         //Kollar om det är multiplayer
         if (ModeSelection.singlePlayer == false)
         {
-            //Tittar vems highscore som är störst
-            player1Text.text = "";
-            player2Text.text = "";
-            singleplayerText.text = "";
-            if (PlayerPrefs.GetInt("HighScorePlayer1") >= PlayerPrefs.GetInt("HighScorePlayer2"))
-            {
-                player1Text.text = "Player 1's Highscore: " + PlayerPrefs.GetInt("HighScorePlayer1").ToString();
-                player2Text.text = "Player 2's Highscore: " + PlayerPrefs.GetInt("HighScorePlayer2").ToString();
-            }
-            else if (PlayerPrefs.GetInt("HighScorePlayer1") < PlayerPrefs.GetInt("HighScorePlayer2"))
-            {
-                player1Text.text = "Player 2's Highscore: " + PlayerPrefs.GetInt("HighScorePlayer2").ToString();
-                player2Text.text = "Player 1's Highscore: " + PlayerPrefs.GetInt("HighScorePlayer1").ToString();
-            }
-            if (PlayerPrefs.GetInt("HighScorePlayer1") <= 0)
-            {
-                player1Text.text = "";
-            }
-            if (PlayerPrefs.GetInt("HighScorePlayer2") <= 0)
-            {
-                player2Text.text = "";
-            }
+            gameManager.Load();
+            int numberOfHighScores;
+            numberOfHighScores = gameManager.data.playerName.Length;
+
+            //Här ska fixas saker
         }
         else
         {
-            player1Text.text = "";
-            player2Text.text = "";
-            singleplayerText.text = "";
             singleplayerText.text = "Ditt Highscore är: " + PlayerPrefs.GetInt("HighScoreSingleplayer").ToString();
         }
     }
