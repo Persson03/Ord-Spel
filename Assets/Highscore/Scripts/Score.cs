@@ -13,6 +13,7 @@ public class Score : MonoBehaviour
     public static int player1Score;
     public static int player2Score;
     public static int singlePlayerScore;
+    
 
     private void Update()
     {
@@ -74,7 +75,7 @@ public class Score : MonoBehaviour
         
         SceneManager.LoadScene(mainMenuScene);
     }
-    public void SaveNamesAndScores()
+    private void SaveNamesAndScores()
     {
         gameManager.data.AddName(Names.name1, player1Score);
         gameManager.data.AddName(Names.name2, player2Score);

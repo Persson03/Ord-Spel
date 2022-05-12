@@ -11,8 +11,10 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        Load();
         Save();
         Debug.Log(GetFilePath(file));
+        data.AddName("Oskar", 3);
     }
 
     public void Save()

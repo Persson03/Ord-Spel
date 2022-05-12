@@ -15,12 +15,14 @@ public class GameData
     {
         //Om det namnet INTE finns med i arrayen och inte är null
         //Lägger till namnet i arrayen och sätter den score du fick som highscore
-        if(!playerName.ToList().Contains(name))
+        int scorePlacement = playerName.Length;
+        int nameArrayLength = playerName.Length;
+        if(!playerName.Contains(name))
         {
-            playerName.ToList().Add(name);
+            playerName = new string[nameArrayLength + 1];
+            playerName[nameArrayLength] = name;
 
-            int scorePlacement;
-            scorePlacement = playerName.Length;
+            
             playerHighScore[scorePlacement] = score;
         }
         else
@@ -38,7 +40,6 @@ public class GameData
                 }
             }
         }
-        
     }
     
 }

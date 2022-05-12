@@ -22,13 +22,12 @@ public class Btn6 : MonoBehaviour
 
     public void enter()
     {
-        Debug.Log("Enter");
         buttons.CurrentLetter = buttons.BtnLetter6;
 
     }
 
     public void exit()
     {
-        Debug.Log("Exit");
+        
     }
 }
