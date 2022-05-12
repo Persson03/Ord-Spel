@@ -657,7 +657,7 @@ PrefabInstance:
       objectReference: {fileID: 1895102710}
     - target: {fileID: 860308087, guid: e80cf6fb91967514bb1610f7c66f5f87, type: 3}
       propertyPath: startingTime
-      value: 30
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 860308087, guid: e80cf6fb91967514bb1610f7c66f5f87, type: 3}
       propertyPath: countdownText

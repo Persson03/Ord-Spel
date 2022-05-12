@@ -6,16 +6,13 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public GameData data;
-    public Names names;
 
     private string file = "dataFile.txt";
 
-    private void Update()
+    private void Start()
     {
-        if (Input.GetKeyDown(KeyCode.N))
-        {
-
-        }
+        Save();
+        Debug.Log(GetFilePath(file));
     }
 
     public void Save()

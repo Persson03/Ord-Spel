@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class Score : MonoBehaviour
 {
-
+    private GameManager gameManager;
 
     private string mainMenuScene = "MainMenu";
 
@@ -14,12 +14,19 @@ public class Score : MonoBehaviour
     public static int player2Score;
     public static int singlePlayerScore;
 
-    public static int player1HighScore;
-    public static int player2HighScore;
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            Debug.Log(Names.name1 + " " + player1Score);
+            Debug.Log(Names.name2 + " " + player2Score);
+        }
+    }
 
     private void Start()
     {
-        
+        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+        gameManager.Load();
     }
 
     //Använd den här i andra script för att lägga till score till spelarna. EXEMPEL: Highscore.AddScore(10);
@@ -47,32 +54,30 @@ public class Score : MonoBehaviour
     {
         ModeSelection.player1Turn = true;
 
-        //Tittar om det är multiplayer eller inte och sedan sparar scores some highscores om dem är större än highscoren
-        if(ModeSelection.singlePlayer == false) //MultiPlayer
+        //Tittar om det är multiplayer eller inte
+        if(ModeSelection.singlePlayer == false) //MultiPlayer - Sparar namn och scores och skickar till JSON
         {
-            if (player1Score > PlayerPrefs.GetInt("HighScorePlayer1"))
-            {
-                player1HighScore = player1Score;
-                PlayerPrefs.SetInt("HighScorePlayer1", player1HighScore);
-            }
-            if (player2Score > PlayerPrefs.GetInt("HighScorePlayer2"))
-            {
-                player2HighScore = player2Score;
-                PlayerPrefs.SetInt("HighScorePlayer2", player2HighScore);
-            }
+            SaveNamesAndScores();
 
             player1Score = 0;
             player2Score = 0;
         }
-        else //Singleplayer
+        else //Singleplayer - Sparar score och skickar till JSON
         {
-            if(singlePlayerScore > PlayerPrefs.GetInt("HighScoreSingleplayer"))
+            if(singlePlayerScore > gameManager.data.singlePlayerHighScore)
             {
-                PlayerPrefs.SetInt("HighScoreSingleplayer", singlePlayerScore);
+                gameManager.data.singlePlayerHighScore = singlePlayerScore;
+                gameManager.Save();
             }
             singlePlayerScore = 0;
         }
         
         SceneManager.LoadScene(mainMenuScene);
+    }
+    public void SaveNamesAndScores()
+    {
+        gameManager.data.AddName(Names.name1, player1Score);
+        gameManager.data.AddName(Names.name2, player2Score);
+        gameManager.Save();
     }
 }

@@ -16,8 +16,8 @@ public class Names : MonoBehaviour
 
     private InputField inputField1;
     private InputField inputField2;
-    private string name1;
-    private string name2;
+    public static string name1;
+    public static string name2;
 
     private string[] nameInputs;
 
@@ -26,37 +26,33 @@ public class Names : MonoBehaviour
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
         inputField1 = GameObject.Find("Player1Input").GetComponent<InputField>();
         inputField2 = GameObject.Find("Player2Input").GetComponent<InputField>();
+        name1 = null;
+        name2 = null;
 
-        
     }
 
     public void ChangeName1(string text)
     {
-        if (text != null)
-        {
-            name1 = text;
-        }
+        name1 = text;
     }
 
     public void ChangeName2(string text)
     {
-        if (text != null)
-        {
-            name2 = text;
-        }
+        name2 = text;
     }
 
-    public void SaveNames()
-    {
-        gameManager.data.AddName(name1, Score.player1HighScore);
-        gameManager.data.AddName(name2, Score.player2HighScore);
-    }
+
 
     public void StartMultiplayerGame()
     {
-        SaveNames();
-        SceneManager.LoadScene(MultiplayerGameScene);
-        Timer.timerActivated = true;
+        if(name1 != null)
+        {
+            if(name2 != null)
+            {
+                SceneManager.LoadScene(MultiplayerGameScene);
+                Timer.timerActivated = true;
+            }
+        }
     }
 
 

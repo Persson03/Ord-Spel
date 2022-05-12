@@ -630,7 +630,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   highScoreObject: {fileID: 131710028236004190, guid: f7f8e15f05016ec4295cb0f8f051d59e,
     type: 3}
-  scoresContainer: {fileID: 1826527556}
+  multiPlayerScoreHolder: {fileID: 1826527556}
+  multiPlayerScores: {fileID: 2098375383}
+  singlePlayerScores: {fileID: 1741595652}
 --- !u!1001 &783386784
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1509,7 +1511,7 @@ GameObject:
   - component: {fileID: 1826527561}
   - component: {fileID: 1826527560}
   m_Layer: 5
-  m_Name: Scores
+  m_Name: MScores
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
