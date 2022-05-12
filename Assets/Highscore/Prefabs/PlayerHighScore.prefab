@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 131710028236004191}
   - component: {fileID: 131710028236004189}
   - component: {fileID: 131710028236004188}
-  - component: {fileID: 5781928761286228023}
+  - component: {fileID: -2163649142318619399}
   m_Layer: 5
   m_Name: PlayerHighScore
   m_TagString: highscore
@@ -79,7 +79,7 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 'Player1 Highscore:'
---- !u!114 &5781928761286228023
+--- !u!114 &-2163649142318619399
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -88,6 +88,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 131710028236004190}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04acfe0abbcff474a805348782e01238, type: 3}
+  m_Script: {fileID: 11500000, guid: d2d6d46d90fb80f4eae1a1bb35d5a150, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

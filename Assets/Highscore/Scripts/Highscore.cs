@@ -5,24 +5,25 @@ using UnityEngine.UI;
 
 public class Highscore : MonoBehaviour
 {
-    private Text player1Text;
-    private Text player2Text;
     private Text singleplayerText;
 
     private GameManager gameManager;
 
     [SerializeField]private GameObject highScoreObject;
-    [SerializeField]private GameObject scoresContainer;
+    [SerializeField]private GameObject multiPlayerScores;
+    [SerializeField] private GameObject singlePlayerScores;
+    private GameObject multiPlayerScoreHolder;
 
     private void Start()
     {
+        ModeSelection.singlePlayer = true;
+        ClearMultiPlayerHighScores();
+
+        multiPlayerScoreHolder = GameObject.Find("MScores");
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
-        player1Text = GameObject.Find("Player1Text").GetComponent<Text>();
-        player2Text = GameObject.Find("Player2Text").GetComponent<Text>();
         singleplayerText = GameObject.Find("SingleplayerText").GetComponent<Text>();
-        player1Text.text = "";
-        player2Text.text = "";
         singleplayerText.text = "";
+        gameManager.Load();
         ShowHighscores();
     }
 
@@ -31,10 +32,10 @@ public class Highscore : MonoBehaviour
         //Kollar om det är multiplayer
         if (ModeSelection.singlePlayer == false)
         {
-            gameManager.Load();
-            int numberOfHighScores;
-            numberOfHighScores = gameManager.data.playerName.Length;
+            multiPlayerScores.SetActive(true);
+            singlePlayerScores.SetActive(false);
 
+            int numberOfHighScores = gameManager.data.playerName.Length;
             for(int i = 0; i < numberOfHighScores; i++)
             {
                 InstantiateScores();
@@ -42,8 +43,17 @@ public class Highscore : MonoBehaviour
         }
         else
         {
+            singlePlayerScores.SetActive(true);
+            multiPlayerScores.SetActive(false);
+            if(gameManager.data.singlePlayerHighScore > 0)
+            {
+                singleplayerText.text = "Ditt Highscore är: " + gameManager.data.singlePlayerHighScore.ToString();
+            }
+            else
+            {
+                singleplayerText.text = "Ditt Highscore är: 0";
+            }
             
-            singleplayerText.text = "Ditt Highscore är: " + PlayerPrefs.GetInt("HighScoreSingleplayer").ToString();
         }
     }
 
@@ -60,19 +70,25 @@ public class Highscore : MonoBehaviour
 
     private void InstantiateScores()
     {
-        GameObject OBJ = Instantiate(highScoreObject) as GameObject;
-        OBJ.transform.SetParent(scoresContainer.transform);
-
-        //Gör en loop där den sätter ett namn och värde på varje gameobject som instantiatar
+        ClearMultiPlayerHighScores();
+        int numberOfNames = gameManager.data.playerName.Length;
+        for (int i = 0; i < numberOfNames; i++)
+        {
+            GameObject OBJ = Instantiate(highScoreObject) as GameObject;
+            OBJ.transform.SetParent(multiPlayerScoreHolder.transform);
+            OBJ.GetComponent<Text>().text = gameManager.data.playerName[i].ToString() + "'s HighScore: " + gameManager.data.playerHighScore[i].ToString();
+        }
     }
 
-    private void ClearHighScores()
+    private void ClearMultiPlayerHighScores()
     {
-        for(int i = 0; i < GameObject.FindGameObjectsWithTag("highscore").Length; i++)
-            {
-                //if(GameObject.FindGameObjectsWithTag("highscore")[i].GetComponent<SelfDestruct>()) // FIXA MER HÄR DIREKT ERRORS AAHHHHHH //
-            }
+        for (int i = 0; i < GameObject.FindGameObjectsWithTag("highscore").Length; i++)
+        {
+            if (GameObject.FindGameObjectsWithTag("highscore")[i].GetComponent<SelfDestruct>())
+                GameObject.FindGameObjectsWithTag("highscore")[i].GetComponent<SelfDestruct>().DestructSelf();
+        }
     }
+    
         
       
 }

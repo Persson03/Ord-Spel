@@ -33,7 +33,6 @@ public class Settings : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(CurrentSetting);
         if (Changing == true)
         {
             foreach (KeyCode kcode in Enum.GetValues(typeof(KeyCode)))
