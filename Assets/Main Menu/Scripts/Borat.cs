@@ -14,6 +14,11 @@ public class Borat : MonoBehaviour
         {
             borat.SetActive(false);
         }
+
+        if (BoratEnable == true)
+        {
+            this.gameObject.SetActive(false);
+        }
     }
 
     // Update is called once per frame
