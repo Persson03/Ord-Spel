@@ -6,30 +6,25 @@ using UnityEngine;
 public class GameData
 {
 
-    public string[] playerName;
-    public int[] playerHighScore;
+    public List<string> playerName = new List<string>();
+    public List<int> playerHighScore = new List<int>();
     public int singlePlayerHighScore;
 
     
     public void AddName(string name, int score)
     {
-        //Om det namnet INTE finns med i arrayen och inte är null
+        //Om det namnet INTE finns med i arrayen
         //Lägger till namnet i arrayen och sätter den score du fick som highscore
-        int scorePlacement = playerName.Length;
-        int nameArrayLength = playerName.Length;
         if(!playerName.Contains(name))
         {
-            playerName = new string[nameArrayLength + 1];
-            playerName[nameArrayLength] = name;
-
-            
-            playerHighScore[scorePlacement] = score;
+            playerName.Add(name);
+            playerHighScore.Add(score);
         }
         else
         {
             //Om det namnet FINNS MED i arrayen
             //kollar vilken plats ditt namn är i arrayen, och om ditt score är högre än ditt highscore så blir det nya highscoret.
-            for (int i = 0; i < playerName.Length; i++)
+            for (int i = 0; i < playerName.Count; i++)
             {
                 if (playerName[i].Contains(name))
                 {

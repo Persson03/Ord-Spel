@@ -2,15 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fd4c5d43-a542-4e12-9455-5bfeb01ffcd4" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/EndScreen/Prefabs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/EndScreen/Scripts.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Ord-Spel/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Ord-Spel/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Game Data/Scripts/GameData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game Data/Scripts/GameData.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Game Data/Scripts/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game Data/Scripts/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GameMechanics/Scripts/Buttons/Btn6.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GameMechanics/Scripts/Buttons/Btn6.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Highscore/Scripts/EndScreen.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Highscore/Scripts/EndScreen.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Highscore/Scripts/Score.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Highscore/Scripts/Score.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UI/Assets.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Highscore/Scripts/Highscore.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Highscore/Scripts/Highscore.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,7 +73,7 @@
       <option name="presentableId" value="Default" />
       <updated>1652367830324</updated>
       <workItem from="1652367846764" duration="169000" />
-      <workItem from="1652368039400" duration="5155000" />
+      <workItem from="1652368039400" duration="6086000" />
     </task>
     <servers />
   </component>

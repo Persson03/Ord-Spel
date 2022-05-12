@@ -35,7 +35,7 @@ public class Highscore : MonoBehaviour
             multiPlayerScores.SetActive(true);
             singlePlayerScores.SetActive(false);
 
-            int numberOfHighScores = gameManager.data.playerName.Length;
+            int numberOfHighScores = gameManager.data.playerName.Count;
             for(int i = 0; i < numberOfHighScores; i++)
             {
                 InstantiateScores();
@@ -71,7 +71,7 @@ public class Highscore : MonoBehaviour
     private void InstantiateScores()
     {
         ClearMultiPlayerHighScores();
-        int numberOfNames = gameManager.data.playerName.Length;
+        int numberOfNames = gameManager.data.playerName.Count;
         for (int i = 0; i < numberOfNames; i++)
         {
             GameObject OBJ = Instantiate(highScoreObject) as GameObject;

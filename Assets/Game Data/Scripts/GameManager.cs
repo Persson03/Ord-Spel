@@ -14,7 +14,6 @@ public class GameManager : MonoBehaviour
         Load();
         Save();
         Debug.Log(GetFilePath(file));
-        data.AddName("Oskar", 3);
     }
 
     public void Save()
