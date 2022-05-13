@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -8,13 +9,27 @@ public class GameData
 
     public List<string> playerName = new List<string>();
     public List<int> playerHighScore = new List<int>();
+    public Dictionary<string, List<int>> playerScoreDict = new Dictionary<string, List<int>>();
     public int singlePlayerHighScore;
 
+    public void AddNameAndScore(string name, int score)
+    {
+        if (playerScoreDict.TryGetValue(name, out List<int> scores))
+        {
+            playerScoreDict[name].Add(score);
+        }
+        else
+        {
+            playerScoreDict.Add(name, new List<int>() { score });
+        }
+
+        playerScoreDict[name].Sort();
+    }
     
     public void AddName(string name, int score)
     {
-        //Om det namnet INTE finns med i arrayen
-        //Lägger till namnet i arrayen och sätter den score du fick som highscore
+        //Om det namnet INTE finns med i listan
+        //Lägger till namnet i listan och sätter den score du fick som highscore
         if(!playerName.Contains(name))
         {
             playerName.Add(name);
@@ -22,8 +37,8 @@ public class GameData
         }
         else
         {
-            //Om det namnet FINNS MED i arrayen
-            //kollar vilken plats ditt namn är i arrayen, och om ditt score är högre än ditt highscore så blir det nya highscoret.
+            //Om det namnet FINNS MED i listan
+            //kollar vilken plats ditt namn är i listan, och om ditt score är högre än ditt highscore så blir det nya highscoret.
             for (int i = 0; i < playerName.Count; i++)
             {
                 if (playerName[i].Contains(name))
@@ -37,4 +52,18 @@ public class GameData
         }
     }
     
+}
+
+
+public class PlayerScore
+{
+    public int Score { get; set; }
+    public DateTime Timestamp { get; set; }
+
+
+    public PlayerScore(int score)
+    {
+        Score = score;
+        Timestamp = DateTime.Now;
+    }
 }
