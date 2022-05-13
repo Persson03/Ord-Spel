@@ -513,7 +513,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Erase Letter
+  m_Text: Ta Bort
 --- !u!1 &1154376810
 GameObject:
   m_ObjectHideFlags: 0
@@ -987,7 +987,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Submit Guess
+  m_Text: Svara
 --- !u!1 &1348711255
 GameObject:
   m_ObjectHideFlags: 0
@@ -1586,7 +1586,7 @@ PrefabInstance:
     - target: {fileID: 933912504200757757, guid: 9f041da9639519545af6d1e4f84a1f95,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4448134024326505324, guid: 9f041da9639519545af6d1e4f84a1f95,
         type: 3}
