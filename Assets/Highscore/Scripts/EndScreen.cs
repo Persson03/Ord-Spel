@@ -5,40 +5,38 @@ using UnityEngine.UI;
 
 public class EndScreen : MonoBehaviour
 {
-    [SerializeField]private string introductionPlayer1 = "Spelare 1 Score: ";
-    [SerializeField] private string introductionPlayer2 = "Spelare 2 Score: ";
     [HideInInspector]public bool hasSetScore;
-    private Text Score1;
-    private Text Score2;
+    private Text score1;
+    private Text score2;
 
 
     private void Start()
     {
-        Score1 = GameObject.Find("Highscore1").GetComponent<Text>();
-        Score2 = GameObject.Find("Highscore2").GetComponent<Text>();
+        score1 = GameObject.Find("Highscore1").GetComponent<Text>();
+        score2 = GameObject.Find("Highscore2").GetComponent<Text>();
         hasSetScore = false;
     }
 
     private void Update()
     {
-        if(hasSetScore == false)
+        if(!hasSetScore)
         {
             SetHighScore();
             hasSetScore = true;
         }
     }
 
-    public void SetHighScore()
+    private void SetHighScore()
     {
         if(ModeSelection.singlePlayer == true)
         {
-            Score1.text = "Ditt Score: " + Score.singlePlayerScore.ToString();
-            Score2.text = "";
+            score1.text = "Ditt Score: " + Score.singlePlayerScore.ToString();
+            score2.text = "";
         }
         else
         {
-            Score1.text = introductionPlayer1 + Score.player1Score.ToString();
-            Score2.text = introductionPlayer2 + Score.player2Score.ToString();
+            score1.text = Names.name1 + "'s Score: " + Score.player1Score.ToString();
+            score2.text = Names.name2 + "'s Score: " + Score.player2Score.ToString();
         }
     }
 }

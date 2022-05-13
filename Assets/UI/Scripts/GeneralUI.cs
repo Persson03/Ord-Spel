@@ -6,14 +6,19 @@ using UnityEngine.SceneManagement;
 
 public class GeneralUI : MonoBehaviour
 {
+    private GameManager gameManager;
+
     private Canvas pauseMenu;
     private Canvas settingsMenu;
     private string mainMenuScene = "MainMenu";
     private string nextPlayerGame = "GameScene2";
     private string highScoresScene = "HighScores";
 
+
     private void Start()
     {
+        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+
 
         pauseMenu = GameObject.Find("Paus Menu").GetComponent<Canvas>();
         settingsMenu = GameObject.Find("Settings Menu").GetComponent<Canvas>();
@@ -78,5 +83,7 @@ public class GeneralUI : MonoBehaviour
         SceneManager.LoadScene(nextPlayerGame);
         ModeSelection.player1Turn = false;
     }
+
+    
 
 }

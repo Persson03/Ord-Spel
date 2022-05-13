@@ -6,40 +6,54 @@ using UnityEngine.SceneManagement;
 
 public class Names : MonoBehaviour
 {
+    private GameManager gameManager;
+    private GameData gameData;
+    
     [SerializeField] private string MultiplayerGameScene;
 
-    public List<string> nameList = new List<string>();
     //nameList.Add(Input.Player1);
     //Debug.Log(nameList[0]);
 
-    private InputField inputText1;
-    private InputField inputText2;
-    private string nameInput1;
-    private string nameInput2;
+    private InputField inputField1;
+    private InputField inputField2;
+    public static string name1;
+    public static string name2;
 
     private string[] nameInputs;
 
     private void Start()
     {
-        inputText1 = GameObject.Find("Player1Input").GetComponent<InputField>();
-        inputText2 = GameObject.Find("Player2Input").GetComponent<InputField>();
+        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+        inputField1 = GameObject.Find("Player1Input").GetComponent<InputField>();
+        inputField2 = GameObject.Find("Player2Input").GetComponent<InputField>();
+        name1 = null;
+        name2 = null;
 
     }
 
-    private void Update()
+    public void ChangeName1(string text)
     {
-        
+        name1 = text;
     }
 
-    private void SaveNames()
+    public void ChangeName2(string text)
     {
-        
+        name2 = text;
     }
+
+
 
     public void StartMultiplayerGame()
     {
-        SceneManager.LoadScene(MultiplayerGameScene);
-        Timer.timerActivated = true;
+        if(name1 != null)
+        {
+            if(name2 != null)
+            {
+                SceneManager.LoadScene(MultiplayerGameScene);
+                Timer.timerActivated = true;
+            }
+        }
     }
+
 
 }
