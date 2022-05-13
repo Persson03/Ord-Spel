@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -25,6 +26,28 @@ public class Highscore : MonoBehaviour
         singleplayerText.text = "";
         gameManager.Load();
         ShowHighscores();
+
+        gameManager.data.AddNameAndScore("Oskar", 11);
+        gameManager.data.AddNameAndScore("Oskar", 22);
+        gameManager.data.AddNameAndScore("Oskar", 18);
+
+        printDict();
+
+    }
+
+
+    private void printDict()
+    {
+        var dict = gameManager.data.playerScoreDict;
+
+        foreach (var key in dict)
+        {
+            var valueToShow = key.Value[0];
+            foreach (var item in key.Value)
+            {
+                Debug.Log($"{key}: {item}");
+            }
+        }
     }
 
     private void ShowHighscores()
@@ -35,7 +58,7 @@ public class Highscore : MonoBehaviour
             multiPlayerScores.SetActive(true);
             singlePlayerScores.SetActive(false);
 
-            int numberOfHighScores = gameManager.data.playerName.Count;
+            int numberOfHighScores = gameManager.data.playerScoreDict.Count;
             for(int i = 0; i < numberOfHighScores; i++)
             {
                 InstantiateScores();
@@ -71,12 +94,12 @@ public class Highscore : MonoBehaviour
     private void InstantiateScores()
     {
         ClearMultiPlayerHighScores();
-        int numberOfNames = gameManager.data.playerName.Count;
+        int numberOfNames = gameManager.data.playerScoreDict.Count;
         for (int i = 0; i < numberOfNames; i++)
         {
             GameObject OBJ = Instantiate(highScoreObject) as GameObject;
             OBJ.transform.SetParent(multiPlayerScoreHolder.transform);
-            OBJ.GetComponent<Text>().text = gameManager.data.playerName[i].ToString() + "'s HighScore: " + gameManager.data.playerHighScore[i].ToString();
+            OBJ.GetComponent<Text>().text = gameManager.data.playerScoreDict + "'s HighScore: " + gameManager.data.playerScoreDict.ToString();
         }
     }
 

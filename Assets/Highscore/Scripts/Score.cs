@@ -77,8 +77,8 @@ public class Score : MonoBehaviour
     }
     private void SaveNamesAndScores()
     {
-        gameManager.data.AddName(Names.name1, player1Score);
-        gameManager.data.AddName(Names.name2, player2Score);
+        gameManager.data.AddNameAndScore(Names.name1, player1Score);
+        gameManager.data.AddNameAndScore(Names.name2, player2Score);
         gameManager.Save();
     }
 }

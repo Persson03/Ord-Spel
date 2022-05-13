@@ -7,8 +7,6 @@ using UnityEngine;
 public class GameData
 {
 
-    public List<string> playerName = new List<string>();
-    public List<int> playerHighScore = new List<int>();
     public Dictionary<string, List<int>> playerScoreDict = new Dictionary<string, List<int>>();
     public int singlePlayerHighScore;
 
@@ -23,10 +21,10 @@ public class GameData
             playerScoreDict.Add(name, new List<int>() { score });
         }
 
-        playerScoreDict[name].Sort();
+        playerScoreDict[name] = playerScoreDict[name].OrderByDescending(i => i).ToList();
     }
     
-    public void AddName(string name, int score)
+    /*public void AddName(string name, int score)
     {
         //Om det namnet INTE finns med i listan
         //Lägger till namnet i listan och sätter den score du fick som highscore
@@ -51,19 +49,8 @@ public class GameData
             }
         }
     }
+    */
+        
     
 }
 
-
-public class PlayerScore
-{
-    public int Score { get; set; }
-    public DateTime Timestamp { get; set; }
-
-
-    public PlayerScore(int score)
-    {
-        Score = score;
-        Timestamp = DateTime.Now;
-    }
-}
