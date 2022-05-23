@@ -146,7 +146,7 @@ PrefabInstance:
     - target: {fileID: 6793901377695783322, guid: c2a2f215771d9bd4f9b121540c1db7f8,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.1
+      value: -0.26
       objectReference: {fileID: 0}
     - target: {fileID: 6793901377695783322, guid: c2a2f215771d9bd4f9b121540c1db7f8,
         type: 3}
@@ -188,8 +188,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6793901377695783323, guid: c2a2f215771d9bd4f9b121540c1db7f8,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 3da6095384786a743a1704283e7eb728,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c2a2f215771d9bd4f9b121540c1db7f8, type: 3}
+--- !u!1 &201486548 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6793901377695783316, guid: c2a2f215771d9bd4f9b121540c1db7f8,
+    type: 3}
+  m_PrefabInstance: {fileID: 201486547}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &296506864
 GameObject:
   m_ObjectHideFlags: 0
@@ -632,6 +644,50 @@ Canvas:
     type: 3}
   m_PrefabInstance: {fileID: 5631439599095469683}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2037196760
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2037196762}
+  - component: {fileID: 2037196761}
+  m_Layer: 0
+  m_Name: BoratChecker
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2037196761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2037196760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29a66c4e2fd9dbc47b8d91f86e9a7f64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  borat2: {fileID: 201486548}
+--- !u!4 &2037196762
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2037196760}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 437.87576, y: 217.31787, z: -550.962}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2046164107 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1277172305, guid: e80cf6fb91967514bb1610f7c66f5f87,
@@ -763,6 +819,11 @@ PrefabInstance:
     - target: {fileID: 1769601657, guid: f9d4886e2811ef64992c858ce9265fdb, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 37388878356342565, guid: f9d4886e2811ef64992c858ce9265fdb,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 478011309703241027, guid: f9d4886e2811ef64992c858ce9265fdb,
         type: 3}
